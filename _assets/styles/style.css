@@ -1,0 +1,233 @@
+header {
+    width: 100vw;
+    height: 15vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+
+    background: rgba(216, 146, 29, 100);
+
+    section {
+        padding-left: 2em;
+        padding-right: 2em;
+        display: flex;
+        align-items: center;
+        img {
+            z-index: 4;
+        }
+    }
+}
+
+/** https://medium.com/@mateus2050/hamburguer-menu-html-and-css-only-c06364fa9bfd **/
+
+#menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+    top: -200vh;
+    position: absolute; /* allow us to position the menu on top of the rest of the content. */
+    margin-left: -3em;
+    height: 75vh;
+    width: 200px;
+    padding: 5em 50px 50px;
+    background: rgb(214, 145, 29);
+    list-style-type: none; /* removes the default bullet points of the list. */
+    -webkit-font-smoothing: antialiased; /*This property sets the font smoothing for webkit browsers. */
+
+    transition: opacity 0.5s, top 0.5s; /* This property sets the transition effect for the left property. This will create a smooth animation when the menu slides in from the left.*/
+
+    opacity: 0;
+
+    li {
+        padding: 10px 0;
+        font-size: 22px;
+        a {
+            text-decoration: none;
+            color: white;
+            transition: 0.5s ease-in;
+            transition-property: color, font-size;
+        }
+        a:hover {
+            color: black;
+            font-size: 105%;
+        }
+    }
+}
+
+#menuToggle {
+    position: relative;
+    z-index: 2;
+
+    span {
+        display: block; /* to ensure that each span element occupies its own line. */
+        width: 33px;
+        height: 4px;
+        margin-bottom: 5px; /* create some spacing between the span elements. */
+        position: relative; /* allow for positioning changes in relation to the parent div.*/
+        background: #cdcdcd;
+        border-radius: 3px;
+        z-index: 2; /* ensure that the span element is under the checkbox */
+
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+        background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+        transform-origin: 4px 0px; /* set to 4px 0px to specify the center of rotation for the transform property above. */
+
+    }
+
+    span:first-child {
+        transform-origin: 0 0; /*sets the origin of the transform property to the top left corner of the element.*/
+    }
+
+    span:nth-last-child(2) {
+        transform-origin: 0 100%; /*sets the origin of the transform property to the bottom left corner of the element.*/
+    }
+
+    input:checked ~ span {/* selects all span elements that come after an input element that is checked inside the #menuToggle element. */
+        opacity: 1;
+        transform: rotate(45deg) translate(-2px, -1px);
+        background: #232323;
+    }
+
+    input:checked ~ span:nth-last-child(2) {
+        transform: rotate(-45deg) translate(0, -1px);
+    }
+
+    input:checked ~ span:nth-last-child(3) { /* selects the third span element from the end that comes after an input element that is checked inside the #menuToggle element. */
+        opacity: 0; /* sets the opacity of the element to 0, making it invisible. */
+        transform: rotate(0deg) scale(0.2, 0.2); /* applies a rotation of 0 degrees and a scale of 0.2 to the element, making it very small and invisible.*/
+    }
+
+    input {
+        position: absolute;
+        width:100%;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 3; /* in order to place the checkbox over the hamburguer */
+        -webkit-touch-callout: none;
+    }
+
+    input:checked ~ div ul {
+        opacity: 100;
+        top: 1vh;
+        text-align: center;
+    }
+}
+
+/****/
+
+#div_menu {
+    height: 100%;
+}
+
+
+.logo_tenrac_header {
+    height: 5em;
+}
+
+.logo_login_header {
+    height: 2.5em;
+}
+
+.MainTitle {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    color: white;
+    font-size: 1.25em;
+    line-height: 0;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+}
+
+main {
+    margin: 8px;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.75em;
+}
+
+#tenrac_presentation {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-left: 5em;
+    margin-right: 5em;
+    margin-top: 5em;
+}
+
+#tenrac_description {
+    display: block;
+    align-content: center;
+    font-size: 1.25em;
+    padding: 2em;
+}
+
+#divine_tenrac_image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#divine_tenrac_image img {
+    height: 50vh;
+    border-radius: 1em;
+}
+
+
+/** RESPONSIVE **/
+
+@media only screen and (max-width:950px) {
+    header {
+        section {
+            padding-left: 0;
+            padding-right: 0;
+            width: 33vw;
+            justify-content: center;
+        }
+    }
+
+    .MainTitle {
+        line-height: 125%;
+        text-align: center;
+        font-size: 1.5vw;
+    }
+
+    .logo_tenrac_header {
+        height: 5em;
+    }
+
+    .logo_login_header {
+        padding-left: 5vw;
+    }
+
+    #tenrac_presentation {
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 2.5em;
+        flex-direction: column;
+    }
+
+    #divine_tenrac_image img {
+        width: 75%;
+        height: 75%;
+    }
+
+    h3 {
+        font-size: 1.35em;
+    }
+
+    #menu {
+        flex-direction: row;
+    }
+
+
+}
