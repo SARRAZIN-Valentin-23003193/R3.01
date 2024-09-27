@@ -36,9 +36,12 @@ function addHeader() { ?>
             <span></span>
             <div id="div_menu">
                 <ul id="menu">
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Clubs</a></li>
-                    <li><a href="#">Date RDV</a></li>
+                    <li><a href="../../../index.php">Accueil</a></li>
+                    <li><a href="structure.php">Clubs</a></li>
+                    <li><a href="calendrier.php">Date RDV</a></li>
+                    <li><a href="plat.php">Plats</a></li>
+                    <li><a href="tenrac.php">Tenrac</a></li>
+                    <li><a href="authentification.php">Se connecter</a></li>
                     <li><a href="#">A propos</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
