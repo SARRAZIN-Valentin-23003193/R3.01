@@ -1,5 +1,5 @@
 <?php
-require 'utils.inc.php';
+require 'HtmlLayout.php';
 require 'modules/blog/models/ajout-tenrac.php';
 start_page('Tenracs');
 ?>
@@ -16,7 +16,7 @@ start_page('Tenracs');
                 <th>Nom</th>
             </tr>
         </table>
-        <form action="ajout-tenrac.php" method="post">
+        <form action="/modules/blog/models/ajout-tenrac.php" method="post">
             <label>Nom du tenrac<input type="text" name="nom"></label>
             <label>Numéro de téléphone<input type="text" name="num"></label>
             <label>Mail<input type="text" name="mail"></label>
