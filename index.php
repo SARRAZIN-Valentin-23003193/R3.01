@@ -1,7 +1,7 @@
 <?php
 require "modules/blog/views/HtmlLayout.php";
 start_page("L'ordre des tenracs");
-createHeader();
+addHeader();
 ?>
 
 <main>
@@ -23,7 +23,7 @@ createHeader();
 </main>
 
 <?php
-
+addFooter();
 end_page();
 
 ?>

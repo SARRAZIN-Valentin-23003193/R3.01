@@ -1,4 +1,10 @@
 <?php
+/***
+ * Start a page
+ * @param $title
+ * @return void
+ * @author Hugo Valente
+ */
 function start_page($title) {
     ?>
 <!DOCTYPE html>
@@ -14,7 +20,12 @@ function start_page($title) {
 <?php
 }
 
-function createHeader() { ?>
+/***
+ * Add header to a page
+ * @return void
+ * @author Hugo Valente
+ */
+function addHeader() { ?>
 <header>
     <section>
         <!-- https://medium.com/@mateus2050/hamburguer-menu-html-and-css-only-c06364fa9bfd -->
@@ -46,10 +57,28 @@ function createHeader() { ?>
 <?php
 }
 
+/***
+ * End a page
+ * @return void
+ * @author Hugo Valente
+ */
 function end_page() { ?>
 
 </body>
 </html>
+<?php
+}
+/***
+ * Add footer to a page
+ * @return void
+ * @author Hugo Valente
+ */
+function addFooter()
+{ ?>
+
+<footer>
+    <p>2024 © Gallou Loic - Garcia Léo - Kanboui Jalil - Marty François - Sarrazin Valentin - Thevenet Antoine - Valente Hugo</p>
+</footer>
 <?php
 }
 
