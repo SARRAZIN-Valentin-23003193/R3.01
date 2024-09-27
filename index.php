@@ -21,6 +21,9 @@ addHeader();
         </section>
     </section>
 </main>
+<form action='modules/blog/controllers/deconnection.php'>
+    <button name="action" type="submit" value="deconnexion">
+</form>
 
 <?php
 addFooter();
