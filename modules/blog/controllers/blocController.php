@@ -1,4 +1,5 @@
 <?php
+require 'blocModel.php';
 function connectDB(){
     $host = 'mysql-gallou.alwaysdata.net';
     $user = 'gallou';
@@ -39,26 +40,14 @@ function drawBloc(){
         $texteRow = mysqli_fetch_assoc($texteResult);
         $texte = $texteRow['TEXTE'];
 
+        $qidpost = 'SELECT Idpost FROM POSTS WHERE IdPost = ' . $i;
+        $idpostResult = mysqli_query($dbLink, $qidpost);
+        $idpostRow = mysqli_fetch_assoc($idpostResult);
+        $idpost = $idpostRow['Idpost'];
+
         $i++;
 
-        initBloc($titre, $lieu, $texte);
+        initBloc($titre, $lieu, $texte, $idpost);
     }
-}
-
-//Récupère le résultat de la requête
-
-function initBloc($titre, $lieu, $texte){
-    ?>
-
-    <section class="bloc">
-        <h2 class="titre"><?php echo(string) $titre; ?></h2>
-        <p class="lieu"><?php echo(string) $lieu; ?></p>
-        <p class="texte"><?php echo(string) $texte; ?></p>
-        <section class="boutonfin">
-            <button class="boutonsuprr">Supprimer</button>
-            <button class="boutonmodif">Modifier</button>
-        </section>
-    </section>
-    <?php
 }
 ?>
