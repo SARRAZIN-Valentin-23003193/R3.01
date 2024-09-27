@@ -178,7 +178,7 @@ h3 {
 }
 
 #divine_tenrac_image img {
-    height: 50vh;
+    height: 40vw;
     border-radius: 1em;
 }
 
@@ -198,7 +198,7 @@ h3 {
     .MainTitle {
         line-height: 125%;
         text-align: center;
-        font-size: 1.5vw;
+        font-size: 2.2vw;
     }
 
     .logo_tenrac_header {
@@ -227,6 +227,21 @@ h3 {
 
     #menu {
         flex-direction: row;
+        width: 90vw;
+        height: 5vh;
+        left: -6vw;
+        padding: 3em ;
+
+        li {
+            font-size: 1em;
+        }
+
+    }
+
+    #menuToggle {
+        input:checked ~ div ul {
+            top: 7vh;
+        }
     }
 
 

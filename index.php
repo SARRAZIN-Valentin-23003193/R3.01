@@ -16,7 +16,7 @@ createHeader();
             <p>Venez, rejoignez-nous dans ce festin éternel, et laissez le Tenrac guider vos pas vers une révélation croustillante.</p>
         </section>
         <section id="divine_tenrac_image">
-            <img src="tender_divin_accueil.png" alt="Tender Divin" id="DivineTender"/>
+            <img src="_assets/images/tender_divin_accueil.webp" alt="Tender Divin" id="DivineTender"/>
             <p><em>La Révélation, 1647, Mickael Martin Nevot</em></p>
         </section>
     </section>

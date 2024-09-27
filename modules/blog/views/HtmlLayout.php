@@ -33,14 +33,14 @@ function createHeader() { ?>
                 </ul>
             </div>
         </div>
-        <img src="logo_tenrac_sans_fond.png" class="logo_tenrac_header" alt="logo tenrac">
+        <img src="_assets/images/logo_tenrac_sans_fond.webp" class="logo_tenrac_header" alt="logo tenrac">
     </section>
     <section class="MainTitle">
         <h1>L'Ordre des Tenracs</h1>
         <h2>Bienvenue sur notre site</h2>
     </section>
     <section>
-        <img src="login_icon.png" alt="Login logo" class="logo_login_header"/>
+        <img src="_assets/images/login_icon.webp" alt="Login logo" class="logo_login_header"/>
     </section>
 </header>
 <?php
