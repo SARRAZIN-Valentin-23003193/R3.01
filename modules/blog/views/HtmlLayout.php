@@ -13,7 +13,9 @@ function start_page($title) {
     <title><?php echo $title ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <link rel="stylesheet" href="_assets/styles/style.css">
+    <link rel="stylesheet" href="<?$cssFile = __DIR__ . '/style.css';
+
+    echo $cssFile;?>">
 </head>
 <body>
 
@@ -36,11 +38,11 @@ function addHeader() { ?>
             <span></span>
             <div id="div_menu">
                 <ul id="menu">
-                    <li><a href="../../../index.php">Accueil</a></li>
-                    <li><a href="structure.php">Clubs</a></li>
+                    <li><a href="index.php">Accueil</a></li>
+                    <li><a href="<?php echo __DIR__.'/structure.php' ?>">Clubs</a></li>
                     <li><a href="calendrier.php">Date RDV</a></li>
                     <li><a href="plat.php">Plats</a></li>
-                    <li><a href="tenrac.php">Tenrac</a></li>
+                    <li><a href="modules/blog/views/tenrac.php">Tenrac</a></li>
                     <li><a href="authentification.php">Se connecter</a></li>
                     <li><a href="#">A propos</a></li>
                     <li><a href="#">Contact</a></li>
