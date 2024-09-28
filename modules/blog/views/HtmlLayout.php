@@ -1,4 +1,5 @@
 <?php
+require __DIR__.'/../../../config.php';
 /***
  * Start a page
  * @param $title
@@ -13,9 +14,7 @@ function start_page($title) {
     <title><?php echo $title ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
-    <link rel="stylesheet" href="<?$cssFile = __DIR__ . '/style.css';
-
-    echo $cssFile;?>">
+    <link rel="stylesheet" href="<?php echo base_url('_assets/styles/style.css'); ?>">
 </head>
 <body>
 
@@ -38,25 +37,25 @@ function addHeader() { ?>
             <span></span>
             <div id="div_menu">
                 <ul id="menu">
-                    <li><a href="index.php">Accueil</a></li>
-                    <li><a href="<?php echo __DIR__.'/structure.php' ?>">Clubs</a></li>
-                    <li><a href="calendrier.php">Date RDV</a></li>
-                    <li><a href="plat.php">Plats</a></li>
-                    <li><a href="modules/blog/views/tenrac.php">Tenrac</a></li>
-                    <li><a href="authentification.php">Se connecter</a></li>
+                    <li><a href="<?php echo base_url('index.php'); ?>">Accueil</a></li>
+                    <li><a href="<?php echo base_url('modules/blog/views/structure.php'); ?>">Clubs</a></li>
+                    <li><a href="<?php echo base_url('modules/blog/views/calendrier.php'); ?>">Date RDV</a></li>
+                    <li><a href="<?php echo base_url('modules/blog/views/plat.php'); ?>">Plats</a></li>
+                    <li><a href="<?php echo base_url('modules/blog/views/tenrac.php'); ?>">Tenrac</a></li>
+                    <li><a href="<?php echo base_url('modules/blog/views/authenthification.php'); ?>">Se connecter</a></li>
                     <li><a href="#">A propos</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
             </div>
         </div>
-        <img src="_assets/images/logo_tenrac_sans_fond.webp" class="logo_tenrac_header" alt="logo tenrac">
+        <img src="<?php echo base_url('_assets/images/logo_tenrac_sans_fond.webp');?>" class="logo_tenrac_header" alt="logo tenrac">
     </section>
     <section class="MainTitle">
         <h1>L'Ordre des Tenracs</h1>
         <h2>Bienvenue sur notre site</h2>
     </section>
     <section>
-        <img src="_assets/images/login_icon.webp" alt="Login logo" class="logo_login_header"/>
+        <img src="<?php echo base_url('_assets/images/login_icon.webp');?>" alt="Login logo" class="logo_login_header"/>
     </section>
 </header>
 <?php
