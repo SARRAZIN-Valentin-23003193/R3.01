@@ -117,6 +117,63 @@ header {
 
 /****/
 
+/**Verison pour le login**/
+
+#menuLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    top: -200vh;
+    position: absolute; /* allow us to position the menu on top of the rest of the content. */
+    width: 210px;
+    margin-left: -12.5em;
+    padding: 2vw;
+    background: rgb(214, 145, 29);
+    list-style-type: none; /* removes the default bullet points of the list. */
+    -webkit-font-smoothing: antialiased; /*This property sets the font smoothing for webkit browsers. */
+
+    transition: opacity 0.5s, top 0.5s; /* This property sets the transition effect for the left property. This will create a smooth animation when the menu slides in from the left.*/
+
+    opacity: 0;
+
+    li {
+        padding: 10px 0;
+        font-size: 22px;
+        a {
+            text-decoration: none;
+            color: white;
+            transition: 0.5s ease-in;
+            transition-property: color, font-size;
+        }
+        a:hover {
+            color: black;
+            font-size: 105%;
+        }
+    }
+}
+
+#menuToggleLogin {
+    input {
+        position: absolute;
+        width: 4%;
+        height: 6%;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 3; /* in order to place the checkbox over the hamburguer */
+        -webkit-touch-callout: none;
+    }
+
+    input:checked ~ ul {
+        opacity: 100;
+        top: 12vh;
+        text-align: center;
+    }
+}
+
+/****/
+
 #div_menu {
     height: 100%;
 }
@@ -252,6 +309,17 @@ footer {
     #menuToggle {
         input:checked ~ div ul {
             top: 7vh;
+        }
+    }
+
+    #menuToggleLogin {
+        input {
+            width: 7%;
+            margin-left: 5vw;
+        }
+        input:checked ~ ul {
+            width: 150px;
+            margin-left: -5em;
         }
     }
 
