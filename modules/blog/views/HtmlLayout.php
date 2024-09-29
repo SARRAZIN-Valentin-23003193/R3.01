@@ -1,4 +1,5 @@
 <?php
+require __DIR__.'/../../../config.php';
 /***
  * Start a page
  * @param $title
