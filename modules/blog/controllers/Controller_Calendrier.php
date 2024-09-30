@@ -1,4 +1,6 @@
 <?php
+// Controller_Calendrier.php
+
 require_once '../models/Model_Calendrier.php';
 
 class Controller_Calendrier {
@@ -9,24 +11,26 @@ class Controller_Calendrier {
     }
 
     public function afficherCalendrier() {
-        // Récupération des repas
+        // Récupération des repas depuis le modèle
         $repas = $this->model->getRepasWithPlats();
 
-        // Tester la récupération des données
-        if (empty($repas)) {
-            echo "Aucun repas trouvé."; // Affiche ce message si aucune donnée n'est trouvée
-        } else {
-            echo "<pre>";
-            print_r($repas); // Vérifie les données récupérées
-            echo "</pre>";
+        // Préparation des données pour le calendrier
+        $events = [];
+        foreach ($repas as $repas_item) {
+            $events[] = [
+                'title' => 'Repas à ' . $repas_item['Adresse_Partenaire'],
+                'description' => 'Plats : ' . $repas_item['Plats'],
+                'start' => $repas_item['Date_R'],
+                'allDay' => true
+            ];
         }
 
-        // Inclure la vue du calendrier
-        include 'modules/blog/views/calendrier.php';
+        // Affichage de la vue
+        require '../views/calendrier.php';
     }
 }
 
-// Instanciation du contrôleur
+// Instanciation du contrôleur et appel de la méthode d'affichage
 $controller = new Controller_Calendrier();
 $controller->afficherCalendrier();
 ?>
