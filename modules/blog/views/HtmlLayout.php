@@ -43,7 +43,7 @@ function addHeader() { ?>
                         <li><a href="<?php echo base_url('modules/blog/views/calendrier.php'); ?>">Date RDV</a></li>
                         <li><a href="<?php echo base_url('modules/blog/views/plat.php'); ?>">Plats</a></li>
                         <li><a href="<?php echo base_url('modules/blog/views/tenrac.php'); ?>">Tenrac</a></li>
-                        <li><a href="<?php echo base_url('modules/blog/views/authenthification.php'); ?>">Se connecter</a></li>
+                        <li><a href="<?php echo base_url('modules/blog/views/authentification.php'); ?>">Se connecter</a></li>
                         <li><a href="#">A propos</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
