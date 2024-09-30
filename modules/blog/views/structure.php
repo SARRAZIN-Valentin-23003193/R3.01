@@ -13,13 +13,16 @@ addHeader();
     </form>
 
     <main>
-        <section id="ensembleClub">
+        <section id="bloc">
             <?php
-            drawClub();
+            $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $postsPerPage = 2;
+            drawClub($currentPage, $postsPerPage);
             ?>
         </section>
     </main>
 <?php
 addFooter();
 end_page();
+
 ?>
