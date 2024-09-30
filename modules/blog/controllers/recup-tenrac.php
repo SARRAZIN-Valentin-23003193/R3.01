@@ -1,10 +1,10 @@
 <?php
 
 function insertLigne(){
-    $pwd = "Super_Pershing";
-    $user = "sarrazin";
-    $host = "mysql-sarrazin.alwaysdata.net";
-    $db = "sarrazin_database";
+    $pwd = "projetwebtenrac";
+    $user = "tenrac45";
+    $host = "mysql-tenrac45.alwaysdata.net";
+    $db = "tenrac45_1";
 
     //Verifie la connection
     $dbLink = mysqli_connect($host, $user, $pwd)
