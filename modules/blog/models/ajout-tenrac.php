@@ -24,7 +24,7 @@ function ajouterTenrac($nom, $num, $mail, $adresse) {
     } catch(PDOException $e) {
         // echo "Erreur : " . $e->getMessage();
     }
-    header('location:http://sarrazin.alwaysdata.net/');
+    header('location:http://tenrac45.alwaysdata.net/');
 }
 
 
