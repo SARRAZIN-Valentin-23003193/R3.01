@@ -3,6 +3,7 @@ require 'HtmlLayout.php';
 require '../models/ajout-tenrac.php';
 require '../controllers/recup-tenrac.php';
 start_page('Tenracs');
+addHeader();
 ?>
 <body>
 <div class="login-modal">
@@ -60,3 +61,8 @@ start_page('Tenracs');
 </div>
 </body>
 </html>
+<?php
+addFooter();
+end_page();
+
+?>
