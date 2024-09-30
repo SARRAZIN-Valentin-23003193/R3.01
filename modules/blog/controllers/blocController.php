@@ -1,5 +1,5 @@
 <?php
-require 'blocModel.php';
+require '/home/tenrac45/www/modules/blog/models/blocModel.php';
 
 function connectDB(){
     $host = 'mysql-gallou.alwaysdata.net';
