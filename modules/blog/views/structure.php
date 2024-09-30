@@ -1,5 +1,5 @@
 <?php
-require '/home/tenrac45/www/modules/blog/controllers/blocController.php';
+require '/home/tenrac45/www/modules/blog/controllers/clubController.php';
 require __DIR__ . '/HtmlLayout.php';
 require '../controllers/ajout-club.php';
 
@@ -13,14 +13,13 @@ addHeader();
     </form>
 
     <main>
-        <section id="bloc">
+        <section id="ensembleClub">
             <?php
-            drawBloc();
+            drawClub();
             ?>
         </section>
     </main>
 <?php
 addFooter();
 end_page();
-
 ?>

@@ -1,8 +1,8 @@
 <?php
-function initBloc($Clubid, $Nom_C, $Adresse_C){
+function initClub($Clubid, $Nom_C, $Adresse_C){
     ?>
 
-    <section class="bloc">
+    <section class="club">
         <h2 class="Nom"><?php echo(string) $Nom_C; ?></h2>
         <p class="Adresse"><?php echo(string) $Adresse_C; ?></p>
         <section class="boutonfin">

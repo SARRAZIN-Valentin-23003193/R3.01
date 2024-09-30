@@ -1,5 +1,5 @@
 <?php
-require '/home/tenrac45/www/modules/blog/models/blocModel.php';
+require '/home/tenrac45/www/modules/blog/models/clubModel.php';
 
 function connectDB(){
     $pwd = "projetwebtenrac";
@@ -17,7 +17,7 @@ function connectDB(){
     return $dbLink;
 }
 
-function drawBloc($currentPage = 1, $postsPerPage = 5){
+function drawClub($currentPage = 1, $postsPerPage = 5){
     $dbLink = connectDB();
 
     // Get the total number of posts
@@ -37,7 +37,7 @@ function drawBloc($currentPage = 1, $postsPerPage = 5){
         $nomClub = $row['Nom_C'];
         $adresse = $row['Adresse_C'];
 
-        initBloc($idClub, $nomClub, $adresse);
+        initClub($idClub, $nomClub, $adresse);
     }
 
     // Generate pagination links
