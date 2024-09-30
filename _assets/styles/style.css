@@ -244,6 +244,8 @@ footer {
     padding-bottom: 1.5vh;
     width: 100vw;
     background: rgba(216, 146, 29, 100);
+    position: absolute; bottom: 0;
+
     p {
         text-align: center;
         color: rgb(53, 53, 53);

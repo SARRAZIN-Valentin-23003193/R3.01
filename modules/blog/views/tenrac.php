@@ -1,7 +1,9 @@
 <?php
+require '../controllers/recup-tenrac.php';
 require 'HtmlLayout.php';
-require 'modules/blog/models/ajout-tenrac.php';
-require 'modules/blog/controllers/recup-tenrac.php';
+require '../models/ajout-tenrac.php';
+
+
 start_page('Tenracs');
 ?>
 <body>
