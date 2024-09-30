@@ -1,53 +1,53 @@
 <?php
 require 'blocModel.php';
+
 function connectDB(){
     $host = 'mysql-gallou.alwaysdata.net';
     $user = 'gallou';
     $pwd = 'Bluestorm13.';
     $db = 'gallou_bd_test';
 
-//Verifie la connection
+    // Verifie la connection
     $dbLink = mysqli_connect($host, $user, $pwd)
     or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
 
-//Choix de la base
+    // Choix de la base
     mysqli_select_db($dbLink , $db)
-    or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink)
-    );
+    or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
     return $dbLink;
 }
 
-function drawBloc(){
+function drawBloc($currentPage = 1, $postsPerPage = 5){
     $dbLink = connectDB();
+
+    // Get the total number of posts
     $result = mysqli_query($dbLink, 'SELECT COUNT(*) as count FROM POSTS');
     $row = mysqli_fetch_assoc($result);
-    $count = (int)$row['count'];
+    $totalPosts = (int)$row['count'];
 
-    $i = 1;
-    while($i < ($count+1)) {
-        $qtitre = 'SELECT TITRE FROM POSTS WHERE IdPost = ' . $i;
-        $titreResult = mysqli_query($dbLink, $qtitre);
-        $titreRow = mysqli_fetch_assoc($titreResult);
-        $titre = $titreRow['TITRE'];
+    // Calculate the offset
+    $offset = ($currentPage - 1) * $postsPerPage;
 
-        $qlieu = 'SELECT LIEU FROM POSTS WHERE IdPost = ' . $i;
-        $lieuResult = mysqli_query($dbLink, $qlieu);
-        $lieuRow = mysqli_fetch_assoc($lieuResult);
-        $lieu = $lieuRow['LIEU'];
+    // Fetch the posts for the current page
+    $query = 'SELECT IdPost, TITRE, LIEU, TEXTE FROM POSTS LIMIT ' . $postsPerPage . ' OFFSET ' . $offset;
+    $result = mysqli_query($dbLink, $query);
 
-        $qtexte = 'SELECT TEXTE FROM POSTS WHERE IdPost = ' . $i;
-        $texteResult = mysqli_query($dbLink, $qtexte);
-        $texteRow = mysqli_fetch_assoc($texteResult);
-        $texte = $texteRow['TEXTE'];
-
-        $qidpost = 'SELECT Idpost FROM POSTS WHERE IdPost = ' . $i;
-        $idpostResult = mysqli_query($dbLink, $qidpost);
-        $idpostRow = mysqli_fetch_assoc($idpostResult);
-        $idpost = $idpostRow['Idpost'];
-
-        $i++;
+    while ($row = mysqli_fetch_assoc($result)) {
+        $idpost = $row['IdPost'];
+        $titre = $row['TITRE'];
+        $lieu = $row['LIEU'];
+        $texte = $row['TEXTE'];
 
         initBloc($titre, $lieu, $texte, $idpost);
     }
+
+    // Generate pagination links
+    $totalPages = ceil($totalPosts / $postsPerPage);
+    for ($i = 1; $i <= $totalPages; $i++) {
+        echo '<a href="?page=' . $i . '">' . $i . '</a> ';
+    }
+
+    // Close the connection
+    mysqli_close($dbLink);
 }
 ?>
