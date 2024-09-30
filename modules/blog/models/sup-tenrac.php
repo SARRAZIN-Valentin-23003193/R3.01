@@ -33,6 +33,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = $_POST['nom'];
 
 
-    // Appeler la fonction pour ajouter les données
-    ajouterTenrac($nom, $num, $mail, $adresse);
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Récupérer les valeurs du formulaire
+        $nom = $_POST['nom'];
+        $num = $_POST['num'];
+        $mail = $_POST['mail'];
+        $adresse = $_POST['adresse'];
+
+        // Appeler la fonction pour ajouter les données
+        ajouterTenrac($nom, $num, $mail, $adresse);
+    }
 }

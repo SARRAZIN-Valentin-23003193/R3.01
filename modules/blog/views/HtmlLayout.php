@@ -43,7 +43,6 @@ function addHeader() { ?>
                         <li><a href="<?php echo base_url('modules/blog/controllers/Controller_Calendrier.php'); ?>">Date RDV</a></li>
                         <li><a href="<?php echo base_url('modules/blog/views/plat.php'); ?>">Plats</a></li>
                         <li><a href="<?php echo base_url('modules/blog/views/tenrac.php'); ?>">Tenrac</a></li>
-                        <li><a href="<?php echo base_url('modules/blog/views/authentification.php'); ?>">Se connecter</a></li>
                         <li><a href="#">A propos</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
@@ -56,7 +55,9 @@ function addHeader() { ?>
             <h2>Bienvenue sur notre site</h2>
         </section>
         <section>
-            <img src="<?php echo base_url('_assets/images/login_icon.webp');?>" alt="Login logo" class="logo_login_header"/>
+            <a href="<?php echo base_url('modules/blog/views/authentification.php'); ?>">
+            <img  src="<?php echo base_url('_assets/images/login_icon.webp');?>" alt="Login logo"  class="logo_login_header"/>
+            </a>
         </section>
     </header>
     <?php
