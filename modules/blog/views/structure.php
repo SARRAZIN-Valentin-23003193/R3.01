@@ -5,7 +5,7 @@ start_page("L'ordre des tenracs");
 addHeader();
 ?>
     <main>
-        <section id="club">
+        <section id="ensembleClub">
             <?php
             drawClub();
             ?>
