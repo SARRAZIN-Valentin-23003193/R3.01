@@ -2,10 +2,10 @@
 require '/home/tenrac45/www/modules/blog/models/blocModel.php';
 
 function connectDB(){
-    $host = 'mysql-gallou.alwaysdata.net';
-    $user = 'gallou';
-    $pwd = 'Bluestorm13.';
-    $db = 'gallou_bd_test';
+    $pwd = "projetwebtenrac";
+    $user = "tenrac45";
+    $host = "mysql-tenrac45.alwaysdata.net";
+    $db = "tenrac45_1";
 
     // Verifie la connection
     $dbLink = mysqli_connect($host, $user, $pwd)
@@ -21,7 +21,7 @@ function drawBloc($currentPage = 1, $postsPerPage = 5){
     $dbLink = connectDB();
 
     // Get the total number of posts
-    $result = mysqli_query($dbLink, 'SELECT COUNT(*) as count FROM POSTS');
+    $result = mysqli_query($dbLink, 'SELECT COUNT(*) as count FROM Club');
     $row = mysqli_fetch_assoc($result);
     $totalPosts = (int)$row['count'];
 
@@ -29,16 +29,15 @@ function drawBloc($currentPage = 1, $postsPerPage = 5){
     $offset = ($currentPage - 1) * $postsPerPage;
 
     // Fetch the posts for the current page
-    $query = 'SELECT IdPost, TITRE, LIEU, TEXTE FROM POSTS LIMIT ' . $postsPerPage . ' OFFSET ' . $offset;
+    $query = 'SELECT Clubid, Nom_C, Adresse_C FROM Club LIMIT ' . $postsPerPage . ' OFFSET ' . $offset;
     $result = mysqli_query($dbLink, $query);
 
     while ($row = mysqli_fetch_assoc($result)) {
-        $idpost = $row['IdPost'];
-        $titre = $row['TITRE'];
-        $lieu = $row['LIEU'];
-        $texte = $row['TEXTE'];
+        $idClub = $row['Clubid'];
+        $nomClub = $row['Nom_C'];
+        $adresse = $row['Adresse_C'];
 
-        initBloc($titre, $lieu, $texte, $idpost);
+        initBloc($idClub, $nomClub, $adresse);
     }
 
     // Generate pagination links

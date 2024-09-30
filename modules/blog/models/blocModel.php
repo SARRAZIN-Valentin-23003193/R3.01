@@ -1,14 +1,13 @@
 <?php
-function initBloc($titre, $lieu, $texte, $Idpost){
+function initBloc($Clubid, $Nom_C, $Adresse_C){
     ?>
 
     <section class="bloc">
-        <h2 class="titre"><?php echo(string) $titre; ?></h2>
-        <p class="lieu"><?php echo(string) $lieu; ?></p>
-        <p class="texte"><?php echo(string) $texte; ?></p>
+        <h2 class="Nom"><?php echo(string) $Nom_C; ?></h2>
+        <p class="Adresse"><?php echo(string) $Adresse_C; ?></p>
         <section class="boutonfin">
-            <button id="<?php echo(string) $Idpost; ?>" class="boutonsuprr">Supprimer</button>
-            <button id="<?php echo(string) $Idpost; ?>" class="boutonmodif">Modifier</button>
+            <button id="<?php echo(string) $Clubid; ?>" class="boutonsuprr">Supprimer</button>
+            <button id="<?php echo(string) $Clubid; ?>" class="boutonmodif">Modifier</button>
         </section>
     </section>
     <?php
