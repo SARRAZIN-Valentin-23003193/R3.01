@@ -1,10 +1,10 @@
 <?php
 
 function insertLigne(){
-    $pwd = "Super_Pershing";
-    $user = "sarrazin";
-    $host = "mysql-sarrazin.alwaysdata.net";
-    $db = "sarrazin_database";
+    $pwd = "projetwebtenrac";
+    $user = "tenrac45";
+    $host = "mysql-tenrac45.alwaysdata.net";
+    $db = "tenrac45_1";
 
     //Verifie la connection
     $dbLink = mysqli_connect($host, $user, $pwd)
@@ -24,42 +24,42 @@ function insertLigne(){
         $qnom = 'SELECT Nom_T FROM Tenracs WHERE Tenracid = ' . $i;
         $nomResult = mysqli_query($dbLink, $qnom);
         $nomRow = mysqli_fetch_assoc($nomResult);
-        $nom = $nomRow['nom'];
+        $nom = isset($row['nom']) ? $row['nom'] : '';
 
         $qnum = 'SELECT NumTel FROM Tenracs WHERE Tenracid = ' . $i;
         $numResult = mysqli_query($dbLink, $qnum);
         $numRow = mysqli_fetch_assoc($numResult);
-        $num = $numRow['num'];
+        $num = isset($row['num']) ? $row['num'] : '';
 
         $qmail = 'SELECT Courriel FROM Tenracs WHERE Tenracid = ' . $i;
         $mailResult = mysqli_query($dbLink, $qmail);
         $mailRow = mysqli_fetch_assoc($mailResult);
-        $mail = $mailRow['mail'];
+        $mail = isset($row['mail']) ? $row['mail'] : '';
 
         $qadresse = 'SELECT Adresse_T FROM Tenracs WHERE Tenracid = ' . $i;
         $adresseResult = mysqli_query($dbLink, $qadresse);
         $adresseRow = mysqli_fetch_assoc($adresseResult);
-        $adresse = $adresseRow['adresse'];
+        $adresse = isset($row['adresse']) ? $row['adresse'] : '';
 
         $qgrade = 'SELECT Grade FROM Tenracs WHERE Tenracid = ' . $i;
         $gradeResult = mysqli_query($dbLink, $qgrade);
         $gradeRow = mysqli_fetch_assoc($gradeResult);
-        $grade = $gradeRow['grade'];
+        $grade = isset($row['grade']) ? $row['grade'] : '';
 
         $qtitre = 'SELECT Titre FROM Tenracs WHERE Tenracid = ' . $i;
         $titreResult = mysqli_query($dbLink, $qtitre);
         $titreRow = mysqli_fetch_assoc($titreResult);
-        $titre = $titreRow['titre'];
+        $titre = isset($row['titre']) ? $row['titre'] : '';
 
         $qrang = 'SELECT Rang FROM Tenracs WHERE Tenracid = ' . $i;
         $rangResult = mysqli_query($dbLink, $qrang);
         $rangRow = mysqli_fetch_assoc($rangResult);
-        $rang = $rangRow['rang'];
+        $rang = isset($row['rang']) ? $row['rang'] : '';
 
         $qdignite = 'SELECT Dignite FROM Tenracs WHERE Tenracid = ' . $i;
         $digniteResult = mysqli_query($dbLink, $qdignite);
         $digniteRow = mysqli_fetch_assoc($digniteResult);
-        $dignite = $digniteRow['dignite'];
+        $dignite = isset($row['dignite']) ? $row['dignite'] : '';
 
         $i++;
 
