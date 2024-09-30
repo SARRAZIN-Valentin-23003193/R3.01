@@ -1,7 +1,7 @@
 <?php
-require '../models/ajout-tenrac.php';
 require 'HtmlLayout.php';
-
+require 'modules/blog/models/ajout-tenrac.php';
+require 'modules/blog/controllers/recup-tenrac.php';
 start_page('Tenracs');
 ?>
 <body>
@@ -9,13 +9,10 @@ start_page('Tenracs');
     <div class="header">
         <h1> Bienvenue sur la page des Tenracs, ici vous pouvez consulter la liste des membres de l'Ordre</h1>
         <table>
-            <?php require '../controllers/recup-tenrac.php'?>
             <tr>
                 <th>Nom</th><th>N°Tel</th><th>Mail</th><th>Adresse</th><th>Grade</th><th>Rang</th><th>Titre</th><th>Dignité</th>
             </tr>
-            <tr>
-                <th>Nom</th>
-            </tr>
+            <?php insertLigne(); ?>
         </table>
         <form action="../models/ajout-tenrac.php" method="post">
             <label>Nom du tenrac<input type="text" name="nom"></label>
