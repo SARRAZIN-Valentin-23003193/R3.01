@@ -37,6 +37,7 @@ function addHeader() { ?>
             <span></span>
             <div id="div_menu">
                 <ul id="menu">
+
                     <li><a href="<?php echo base_url('index.php'); ?>">Accueil</a></li>
                     <li><a href="<?php echo base_url('modules/blog/views/structure.php'); ?>">Clubs</a></li>
                     <li><a href="<?php echo base_url('modules/blog/views/calendrier.php'); ?>">Date RDV</a></li>
