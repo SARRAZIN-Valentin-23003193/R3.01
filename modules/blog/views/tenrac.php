@@ -9,11 +9,15 @@ addHeader();
 <div class="login-modal">
     <div class="header">
         <h1> Bienvenue sur la page des Tenracs, ici vous pouvez consulter la liste des membres de l'Ordre</h1>
-        <table>
+        <table id="table">
             <tr>
                 <th class="nom">Nom</th><th class="num">N°Tel</th><th class="mail">Mail</th><th class="adresse">Adresse</th><th class="grade">Grade</th><th class="rang">Rang</th><th class="titre">Titre</th><th class="dignite">Dignité</th>
             </tr>
-            <?php insertLigne(); ?>
+            <?php
+            $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $postsPerPage = 10;
+            insertLigne($currentPage, $postsPerPage);
+            ?>
         </table>
         <form action="../models/ajout-tenrac.php" method="post">
             <label>Nom du tenrac<input type="text" name="nom"></label>
