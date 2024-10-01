@@ -1,6 +1,6 @@
 <?php
-require '/home/tenrac45/www/modules/blog/models/clubModel.php';
-require 'connectDataBaseController.php';
+require 'modules/blog/models/clubModel.php';
+require 'modules/blog/models/connectDataBaseModel.php';
 
 function drawClub($currentPage = 1, $postsPerPage = 5){
     $dbLink = connectDB();
