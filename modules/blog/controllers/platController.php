@@ -62,7 +62,7 @@ function drawPlat($currentPage = 1, $postsPerPage = 5){
         }
 
         if ($row['Nom_I']) {
-            echo '<li>Ingredient: ' . htmlspecialchars($row['Nom_I']) . '</li>';
+            echo '<li>Ingredients: ' . htmlspecialchars($row['Nom_I']) . '</li>';
         }
 
         if ($currentAccomp !== $row['Nom_Accomp']) {
