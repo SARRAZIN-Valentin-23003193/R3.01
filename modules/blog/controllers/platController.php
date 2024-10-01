@@ -15,15 +15,16 @@ function connectDB(){
     return $dbLink;
 }
 
+//affiche les plats avec leur accompagnements
 function drawPlat($currentPage = 1, $postsPerPage = 5){
     $dbLink = connectDB();
-
+    //nombre total de plats
     $result = mysqli_query($dbLink, 'SELECT COUNT(*) as count FROM Plat');
     $row = mysqli_fetch_assoc($result);
     $totalPosts = (int)$row['count'];
 
     $offset = ($currentPage - 1) * $postsPerPage;
-
+    //récupération des plats, sauces et ingrédients
     $query = 'SELECT Plat.Plat_id, Plat.Nom_P, Sauce.Sauce_id, Sauce.Nom_S, Ingredient.Nom_I
                 FROM Plat
                 JOIN Sauce ON Plat.Plat_id = Sauce.Plat_id
@@ -34,7 +35,7 @@ function drawPlat($currentPage = 1, $postsPerPage = 5){
 
     $currentPlat = null;
     $currentSauce = null;
-
+    //affiche les plats avec sauces et ingrédients
     while ($row = mysqli_fetch_assoc($result)) {
         if ($currentPlat !== $row['Plat_id']) {
             if ($currentPlat !== null) {
