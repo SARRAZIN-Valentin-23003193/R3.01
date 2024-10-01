@@ -1,18 +1,17 @@
 <?php
 require __DIR__ . '/HtmlLayout.php';
+//session_start();
+if(isset($_SESSION['suid'])) {
+    header('Location: /index.php');
+}
 start_page("L'ordre des tenracs");
 addHeader();
-?>
-<?php
-if(isset($_SESSION['suid'])) {
-    header('Location: /home/tenrac45/www/index.php');
-}
 if (isset($_SESSION['error'])) {
     echo $_SESSION['error']; // Afficher le message d'erreur
     unset($_SESSION['error']); // Supprimer le message après l'affichage
 }
 ?>
-<form action="" method="post" >
+<form action="/modules/blog/models/test-passModel.php" method="post" >
     <label for="identifiant">Identifiant :</label>
     <input type="text" id="identifiant" name="identifiant" required>
 
@@ -26,5 +25,4 @@ if (isset($_SESSION['error'])) {
 <?php
 addFooter();
 end_page();
-
 ?>
