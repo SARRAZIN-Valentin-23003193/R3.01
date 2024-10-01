@@ -25,8 +25,10 @@ function drawPlat($currentPage = 1, $postsPerPage = 5){
 
     $offset = ($currentPage - 1) * $postsPerPage;
     //récupération des plats, sauces et ingrédients
-    $query = 'SELECT Plat.Plat_id, Plat.Nom_P, Sauce.Sauce_id, Sauce.Nom_S, Ingredient.Nom_I
+    $query = 'SELECT Plat.Nom_P, Sauce_Accompagnement.Nom_S, Ingredient.Nom_I, Accompagnement.Nom_Accomp
                 FROM Plat
+                JOIN Accompagne ON Plat.Plat_id = Accompagne.Plat_id
+                JOIN Accompagnement ON Accompagne.Accomp_id = Accompagnement.Accomp_id
                 JOIN Sauce ON Plat.Plat_id = Sauce.Plat_id
                 JOIN Sauce_Accompagnement ON Sauce.Sauce_id = Sauce_Accompagnement.Sauce_id
                 JOIN Ingredient ON Sauce_Accompagnement.Ingredient_id = Ingredient.Ingredient_id
@@ -35,11 +37,12 @@ function drawPlat($currentPage = 1, $postsPerPage = 5){
 
     $currentPlat = null;
     $currentSauce = null;
-    //affiche les plats avec sauces et ingrédients
+    $currentAccomp = null;
+    //affiche les plats avec sauces, ingrédients et accompagnements
     while ($row = mysqli_fetch_assoc($result)) {
         if ($currentPlat !== $row['Plat_id']) {
             if ($currentPlat !== null) {
-                echo '</ul></ul>';
+                echo '</ul></ul></ul>';
             }
             $currentPlat = $row['Plat_id'];
             echo '<h2>' . htmlspecialchars($row['Nom_P']) . '</h2>';
@@ -51,10 +54,28 @@ function drawPlat($currentPage = 1, $postsPerPage = 5){
                 echo '</ul>';
             }
             $currentSauce = $row['Sauce_id'];
-            echo '<li>' . htmlspecialchars($row['Nom_S']) . '<ul>';
+            if ($row['Nom_S']) {
+                echo '<li>Sauce: ' . htmlspecialchars($row['Nom_S']) . '<ul>';
+            } else {
+                echo '<li>Sauce: None<ul>';
+            }
         }
 
-        echo '<li>' . htmlspecialchars($row['Nom_I']) . '</li>';
+        if ($row['Nom_I']) {
+            echo '<li>Ingredient: ' . htmlspecialchars($row['Nom_I']) . '</li>';
+        }
+
+        if ($currentAccomp !== $row['Nom_Accomp']) {
+            if ($currentAccomp !== null) {
+                echo '</ul>';
+            }
+            $currentAccomp = $row['Nom_Accomp'];
+            if ($row['Nom_Accomp']) {
+                echo '<li>Accompaniment: ' . htmlspecialchars($row['Nom_Accomp']) . '</li>';
+            } else {
+                echo '<li>Accompaniment: None</li>';
+            }
+        }
     }
 
     if ($currentPlat !== null) {
