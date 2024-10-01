@@ -2,6 +2,8 @@
 require '/home/tenrac45/www/modules/blog/controllers/clubController.php';
 require __DIR__ . '/HtmlLayout.php';
 require '../controllers/ajout-club.php';
+require '../controllers/sup-club.php';
+
 
 start_page("L'ordre des tenracs");
 addHeader();
@@ -16,7 +18,7 @@ addHeader();
         <section id="bloc">
             <?php
             $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-            $postsPerPage = 2;
+            $postsPerPage = 6;
             drawClub($currentPage, $postsPerPage);
             ?>
         </section>

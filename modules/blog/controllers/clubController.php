@@ -1,6 +1,6 @@
 <?php
-require 'modules/blog/models/clubModel.php';
-require 'modules/blog/models/connectDataBaseModel.php';
+require '../models/clubModel.php';
+require '../models/connectDataBaseModel.php';
 
 function drawClub($currentPage = 1, $postsPerPage = 5){
     $dbLink = connectDB();
