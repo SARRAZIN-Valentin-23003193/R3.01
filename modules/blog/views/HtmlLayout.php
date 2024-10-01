@@ -1,5 +1,6 @@
 <?php
 require __DIR__.'/../../../config.php';
+session_start();
 /***
  * Start a page
  * @param $title
@@ -40,7 +41,7 @@ function addHeader() { ?>
 
                         <li><a href="<?php echo base_url('index.php'); ?>">Accueil</a></li>
                         <li><a href="<?php echo base_url('modules/blog/views/structure.php'); ?>">Clubs</a></li>
-                        <li><a href="<?php echo base_url('modules/blog/views/calendrier.php'); ?>">Date RDV</a></li>
+                        <li><a href="<?php echo base_url('modules/blog/controllers/Controller_Calendrier.php'); ?>">Date RDV</a></li>
                         <li><a href="<?php echo base_url('modules/blog/views/plat.php'); ?>">Plats</a></li>
                         <li><a href="<?php echo base_url('modules/blog/views/tenrac.php'); ?>">Tenrac</a></li>
                         <li><a href="#">A propos</a></li>
@@ -55,9 +56,19 @@ function addHeader() { ?>
             <h2>Bienvenue sur notre site</h2>
         </section>
         <section>
-            <a href="<?php echo base_url('modules/blog/views/authentification.php'); ?>">
-            <img  src="<?php echo base_url('_assets/images/login_icon.webp');?>" alt="Login logo"  class="logo_login_header"/>
-            </a>
+            <?php
+            if(isset($_SESSION['suid'])) {
+                ?><a href="<?php echo base_url('modules/blog/controllers/deconnexionController.php'); ?>">
+                    <img  src="<?php echo base_url('_assets/images/login_icon.webp');?>" alt="Login logo"  class="logo_login_header"/>
+                Se déconnecter</a>
+            <?php
+            } else {
+                ?><a href="<?php echo base_url('modules/blog/views/authentification.php'); ?>" >
+                    <img  src="<?php echo base_url('_assets/images/login_icon.webp');?>" alt="Login logo"  class="logo_login_header"/>
+                Se connecter</a>
+            <?php
+            }
+            ?>
         </section>
     </header>
     <?php
