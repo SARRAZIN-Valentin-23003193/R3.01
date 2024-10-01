@@ -47,7 +47,7 @@ function drawPlat($currentPage = 1, $postsPerPage = 5){
 
         if ($currentSauce !== $row['Sauce_id']) {
             if ($currentSauce !== null) {
-                echo '</ul>';Est_compose;
+                echo '</ul>';
             }
             $currentSauce = $row['Sauce_id'];
             echo '<li>' . htmlspecialchars($row['Nom_S']) . '<ul>';
