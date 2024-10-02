@@ -31,6 +31,9 @@ try {
                 break;
             case 'plats':
                 (new blog\controllers\platController())->execute();
+                break;
+            default:
+                (new blog\controllers\Homepage())->execute();
         }
     }else {
         (new blog\controllers\Homepage())->execute();

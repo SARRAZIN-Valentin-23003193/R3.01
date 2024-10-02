@@ -19,9 +19,8 @@ class platController {
     function drawPlat($currentPage = 1, $postsPerPage = 5) {
         $platModel = new platsModel();
         list($plats, $totalPosts) = $platModel->fetchPlats($currentPage, $postsPerPage);
-
         $totalPages = ceil($totalPosts / $postsPerPage);
-        renderPlats($plats, $totalPages);
+        renderClubs($plats, $totalPages);
     }
 
     //ajout des plats
