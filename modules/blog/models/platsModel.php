@@ -1,5 +1,7 @@
 <?php
-class Plat {
+
+namespace blog\models;
+class platsModel {
     private $host = "mysql-tenrac45.alwaysdata.net";
     private $username = "tenrac45";
     private $password = "projetwebtenrac";

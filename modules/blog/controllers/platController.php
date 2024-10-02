@@ -3,6 +3,7 @@
 namespace blog\controllers;
 
 use blog\views\plat;
+use blog\models\platsModel;
 
 require 'modules/blog/models/platsModel.php';
 require 'modules/blog/views/plat.php';
@@ -75,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $plat->ajouterPLat($nom);
     } elseif (isset($_POST['modifier'])) {
         $idModif = $_POST['PLat_id'];
-        $PLatNom = $_POST['PLatNom'];
+        $PlatNom = $_POST['PLatNom'];
         $plat->modifierPLat($idModif, $PlatNom);
     } elseif (isset($_POST['supprimer'])) {
         $idSup = $_POST['PLat_id'];
