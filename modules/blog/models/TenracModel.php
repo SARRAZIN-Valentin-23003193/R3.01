@@ -18,7 +18,7 @@ class TenracModel {
 
     public function recupTenrac($currentPage = 1, $postsPerPage = 5): array {
         // Get the total number of posts
-        $stmt = $this->conn->query('SELECT COUNT() as count FROM Tenracs');
+        $stmt = $this->conn->query('SELECT COUNT(*) as count FROM Tenracs');
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $totalPosts = (int)$row['count'];
 

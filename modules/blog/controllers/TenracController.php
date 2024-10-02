@@ -67,14 +67,13 @@ class TenracController {
         }
     }
 
-    function afficherTenrac($currentPage = 1, $postsPerPage = 5) {
+    public function afficherTenrac($currentPage = 1, $postsPerPage = 5) {
+        require_once 'modules/blog/views/TenracInit.php';
         $clubModel = new TenracModel();
         list($clubs, $totalPosts) = $clubModel->recupTenrac($currentPage, $postsPerPage);
-
         $totalPages = ceil($totalPosts / $postsPerPage);
-        renderTenrac($clubs, $totalPages);
+        renderTenracs($clubs, $totalPages);
     }
-    // Utilisation de la classe TenracModel
 
 
 }

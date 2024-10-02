@@ -2,6 +2,8 @@
 
 namespace blog\views;
 
+use blog\controllers\TenracController;
+
 class TenracView {
 
     public function show() : void{
@@ -14,11 +16,16 @@ class TenracView {
     <tr>
         <th class="nom">Nom</th><th class="num">N°Tel</th><th class="mail">Mail</th><th class="adresse">Adresse</th><th class="grade">Grade</th><th class="rang">Rang</th><th class="titre">Titre</th><th class="dignite">Dignité</th>
     </tr>
-    <?php
-        //$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-        //$tenracsPerPage = 10;
-        //insertLigne($currentPage, $tenracsPerPage);
-    ?>
+        <?php
+        if (class_exists('blog\controllers\TenracController')) {
+            $controller = new TenracController();
+            $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+            $postsPerPage = 6;
+            $controller->afficherTenrac($currentPage, $postsPerPage);
+        } else {
+            echo "Erreur : La classe ClubController n'existe pas.";
+        }
+        ?>
     </table>
 
     <form action="../models/rechercheTenracModel.php" method="post">
