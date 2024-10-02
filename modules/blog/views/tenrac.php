@@ -8,7 +8,6 @@ class tenrac {
         ob_start();
 
 ?>
-    <main>
     <div class="login-modal">
     <div class="header">
     <h1> Bienvenue sur la page des Tenracs, ici vous pouvez consulter la liste des membres de l'Ordre</h1>
@@ -17,10 +16,10 @@ class tenrac {
         <th class="nom">Nom</th><th class="num">N°Tel</th><th class="mail">Mail</th><th class="adresse">Adresse</th><th class="grade">Grade</th><th class="rang">Rang</th><th class="titre">Titre</th><th class="dignite">Dignité</th>
     </tr>
     <?php
-            //$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-            //$tenracsPerPage = 10;
-            //insertLigne($currentPage, $tenracsPerPage);
-            ?>
+        //$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        //$tenracsPerPage = 10;
+        //insertLigne($currentPage, $tenracsPerPage);
+    ?>
     </table>
     <form action="../models/rechercheTenracModel.php" method="post">
         <label><input type="text" name="recherche"></label>
