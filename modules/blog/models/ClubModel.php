@@ -1,5 +1,5 @@
 <?php
-class Club {
+class ClubModel {
     private $host = "mysql-tenrac45.alwaysdata.net";
     private $username = "tenrac45";
     private $password = "projetwebtenrac";
