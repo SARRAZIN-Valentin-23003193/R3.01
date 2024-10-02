@@ -18,6 +18,9 @@ try {
             case 'clubs':
                 (new blog\controllers\ClubController())->execute();
                 break;
+            case 'ajouterClub':
+                (new blog\controllers\ClubController())->ajouterClub();
+                break;
             case 'tenrac':
                 (new blog\controllers\TenracController())->execute();
                 break;
