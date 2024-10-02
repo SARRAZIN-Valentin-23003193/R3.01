@@ -1,5 +1,5 @@
 <?php
-class ClubModel {
+class Plat {
     private $host = "mysql-tenrac45.alwaysdata.net";
     private $username = "tenrac45";
     private $password = "projetwebtenrac";
@@ -14,10 +14,9 @@ class ClubModel {
             echo "Erreur de connexion : " . $e->getMessage();
         }
     }
-
-    public function fetchClubs($currentPage = 1, $postsPerPage = 5) {
+    public function fetchPlats($currentPage = 1, $postsPerPage = 5) {
         // Get the total number of posts
-        $result = mysqli_query($this->conn, 'SELECT COUNT(*) as count FROM Club');
+        $result = mysqli_query($this->conn, 'SELECT COUNT(*) as count FROM Plat');
         $row = mysqli_fetch_assoc($result);
         $totalPosts = (int)$row['count'];
 
@@ -25,60 +24,62 @@ class ClubModel {
         $offset = ($currentPage - 1) * $postsPerPage;
 
         // Fetch the posts for the current page
-        $query = 'SELECT Clubid, Nom_C, Adresse_C FROM Club LIMIT ' . $postsPerPage . ' OFFSET ' . $offset;
+        $query = 'SELECT Plat.Nom_P, Sauce_Accompagnement.Nom_S, Ingredient.Nom_I, Accompagnement.Nom_Accomp
+                FROM Plat
+                JOIN Accompagne ON Plat.Plat_id = Accompagne.Plat_id
+                JOIN Accompagnement ON Accompagne.Accomp_id = Accompagnement.Accomp_id
+                JOIN Sauce ON Plat.Plat_id = Sauce.Plat_id
+                JOIN Sauce_Accompagnement ON Sauce.Sauce_id = Sauce_Accompagnement.Sauce_id
+                JOIN Ingredient ON Sauce_Accompagnement.Ingredient_id = Ingredient.Ingredient_id LIMIT ' . $postsPerPage . ' OFFSET ' . $offset;
         $result = mysqli_query($this->conn, $query);
 
-        $clubs = [];
+        plats = [];
         while ($row = mysqli_fetch_assoc($result)) {
-            $clubs[] = $row;
+            $plats[] = $row;
         }
 
-        return [$clubs, $totalPosts];
+        return [$plats, $totalPosts];
     }
 
-    // Méthode pour ajouter un club
-    public function ajouterClub($nom, $lieux) {
+    // Méthode pour ajouter un plat
+    public function ajouterPlat($plat) {
         try {
-            $sql = "INSERT INTO Club (Nom_C, Adresse_C, Codepere) VALUES (:nom, :lieux, 1)";
+            $sql = "INSERT INTO Plat (Nom_P) VALUES (:plat)";
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':nom', $nom);
-            $stmt->bindParam(':lieux', $lieux);
+            $stmt->bindParam(':plat', $plat);
             $stmt->execute();
-            header('Location: https://tenrac45.alwaysdata.net/modules/blog/views/structure.php/');
+            header('Location: https://tenrac45.alwaysdata.net/modules/blog/views/plat.php/');
         } catch (PDOException $e) {
             echo "Erreur lors de l'ajout : " . $e->getMessage();
         }
     }
 
-    // Méthode pour modifier un club
-    public function modifierClub($idModif, $ClubAdresse, $ClubNom) {
+    // Méthode pour modifier un plat
+    public function modifierPlat($idModif, $Platnom) {
         try {
-            $sql = "UPDATE Club SET Nom_C = :ClubNom, Adresse_C = :ClubAdresse WHERE Clubid = :idModif";
+            $sql = "UPDATE Plat SET Nom_P = :Platnom WHERE Plat_id = :idModif";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':idModif', $idModif);
-            $stmt->bindParam(':ClubAdresse', $ClubAdresse);
-            $stmt->bindParam(':ClubNom', $ClubNom);
+            $stmt->bindParam(':Platnom', $Platnom);
             $stmt->execute();
-            header('Location: https://tenrac45.alwaysdata.net/modules/blog/views/structure.php/');
+            header('Location: https://tenrac45.alwaysdata.net/modules/blog/views/plat.php/');
         } catch (PDOException $e) {
             echo "Erreur lors de la modification : " . $e->getMessage();
         }
     }
 
-    // Méthode pour supprimer un club
-    public function supprimerClub($idSup) {
+    // Méthode pour supprimer un plat
+    public function supprimerPlat($idSup) {
         try {
-            $sql = "DELETE FROM Club WHERE Clubid = :idSup";
+            $sql = "DELETE FROM Plat WHERE Plat_id = :idSup";
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':idSup', $idSup);
             $stmt->execute();
-            header('Location: https://tenrac45.alwaysdata.net/modules/blog/views/structure.php/');
+            header('Location: https://tenrac45.alwaysdata.net/modules/blog/views/plat.php/');
         } catch (PDOException $e) {
             echo "Erreur lors de la suppression : " . $e->getMessage();
         }
     }
 }
-
-// Utilisation de la classe Club
 
 ?>
