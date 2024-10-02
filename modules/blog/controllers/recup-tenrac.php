@@ -1,6 +1,6 @@
 <?php
 require '/home/tenrac45/www/modules/blog/models/tenracModel.php';
-require 'connectDataBaseController.php';
+require '../models/connectDataBaseModel.php';
 function insertLigne($currentPage = 1, $tenracsPerPage = 10){
     $dbLink = connectDB();
 
