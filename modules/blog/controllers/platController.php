@@ -1,13 +1,19 @@
 <?php
 
-//appel modèle platsModel
-require '../models/platsModel.php';
+namespace blog\controllers;
+
+
+require 'modules/blog/models/platsModel.php';
 
 class platController {
     private $model; // sert à stocker l'instance du modèle
 
     public function __construct() {
         $this->model = new platsModel(); // Initialisation du modèle
+    }
+
+    public function show() : void {
+        return;
     }
 
     //ajout des plats
