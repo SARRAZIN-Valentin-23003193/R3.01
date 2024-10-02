@@ -1,9 +1,11 @@
 <?php
 
 namespace blog\views;
+use blog\controllers\platController;
 
 
 class plat {
+
 
     public function show() : void {
         ob_start();
@@ -17,9 +19,9 @@ class plat {
             <section id="bloc">
                 <?php
 
-                //$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-                //$postsPerPage = 6;
-                //drawPlat($currentPage, $postsPerPage);
+                $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                $postsPerPage = 6;
+                drawPlat($currentPage, $postsPerPage);
                 ?>
             </section>
         </main>
