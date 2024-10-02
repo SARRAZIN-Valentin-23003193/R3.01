@@ -10,12 +10,17 @@ class structure {
     public function show() {
         ob_start();
 ?>
-    <form action="?action=ajouterClub" method="post">
-        <h2>Ajouter un club</h2>
-        <label>Nom du Club :<input type="text" name="nomclub" required></label>
-        <label>Adresse <input type="text" name="adressclub" required></label>
-        <button type="submit">envoyer</button>
-    </form>
+        <?php
+        if(isset($_SESSION['suid'])) {
+            ?>
+            <form action="?action=ajouterClub" method="post">
+                <label>nom du Club <input type="text" name="nomclub" required></label>
+                <label>Adresse <input type="text" name="adressclub" required></label>
+                <button type="submit">envoyer</button>
+            </form>
+            <?php
+        }
+        ?>
 
     <main>
         <link rel="stylesheet" href="<?php echo base_url('_assets/styles/clubStyle.css'); ?>">
