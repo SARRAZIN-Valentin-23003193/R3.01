@@ -1,6 +1,7 @@
 <?php
 
 namespace blog\views;
+
 use blog\controllers\platController;
 
 
@@ -18,10 +19,14 @@ class plat {
         <main>
             <section id="bloc">
                 <?php
-
-                $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-                $postsPerPage = 6;
-                drawPlat($currentPage, $postsPerPage);
+                if (class_exists('blog\controllers\platController')) {
+                    $controller = new platController();
+                    $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                    $postsPerPage = 6;
+                    $controller->drawPlat($currentPage, $postsPerPage);
+                } else {
+                    echo "Erreur : La classe ClubController n'existe pas.";
+                }
                 ?>
             </section>
         </main>
