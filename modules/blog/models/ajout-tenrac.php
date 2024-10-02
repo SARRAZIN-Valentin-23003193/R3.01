@@ -24,9 +24,9 @@ function ajouterTenrac($nom, $num, $mail, $adresse, $grade, $titre, $rang, $dign
 
         // Exécuter la requête
         $stmt->execute();
-        // echo "Pizza ajoutée avec succès !";
+        // echo "Tenrac ajouté avec succès !";
     } catch(PDOException $e) {
-        // echo "Erreur : " . $e->getMessage();
+        // echo "Erreur";
     }
     header('location:https://tenrac45.alwaysdata.net/modules/blog/views/tenrac.php');
 }
