@@ -1,6 +1,11 @@
 <?php
-require_once '../models/ClubModel.php'; // Inclure le modèle Club
-require '../views/clubView.php';
+
+namespace blog\controllers;
+
+use ClubModel;
+
+require 'modules/blog/models/ClubModel.php'; // Inclure le modèle Club
+require 'modules/blog/views/structure.php';
 
 class ClubController {
 
@@ -9,6 +14,11 @@ class ClubController {
     // Constructeur qui initialise le modèle
     public function __construct() {
         $this->clubModel = new ClubModel();  // Instanciation du modèle Club
+    }
+
+    public function execute() : void
+    {
+        (new \blog\views\structure())->show();
     }
 
     function drawClub($currentPage = 1, $postsPerPage = 5) {

@@ -1,5 +1,10 @@
 <?php
+
+namespace blog\views;
+
 require __DIR__.'/../../../config.php';
+
+
 class HtmlLayout {
 
 private $content;
@@ -35,11 +40,11 @@ public function show() {
             <div id="div_menu">
                 <ul id="menu">
 
-                    <li><a href="<?php echo base_url('index.php'); ?>">Accueil</a></li>
-                    <li><a href="<?php echo base_url('modules/blog/views/structure.php'); ?>">Clubs</a></li>
-                    <li><a href="<?php echo base_url('modules/blog/controllers/Controller_Calendrier.php'); ?>">Date RDV</a></li>
-                    <li><a href="<?php echo base_url('modules/blog/views/plat.php'); ?>">Plats</a></li>
-                    <li><a href="<?php echo base_url('modules/blog/views/tenrac.php'); ?>">Tenrac</a></li>
+                    <li><a href="?action=homepage">Accueil</a></li>
+                    <li><a href="?action=clubs">Clubs</a></li>
+                    <li><a href="?action=homepage">Date RDV</a></li>
+                    <li><a href="?action=homepage">Plats</a></li>
+                    <li><a href="?action=homepage">Tenrac</a></li>
                     <li><a href="#">A propos</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>

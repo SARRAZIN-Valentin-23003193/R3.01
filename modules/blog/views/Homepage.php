@@ -26,7 +26,7 @@ class Homepage {
             </section>
         </main>
 <?php
-        (new \HtmlLayout('Accueil', ob_get_clean()))->show();
+        (new HtmlLayout('Accueil', ob_get_clean()))->show();
     }
 }
 ?>
