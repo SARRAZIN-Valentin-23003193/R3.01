@@ -40,7 +40,7 @@ class HtmlLayout {
                         <ul id="menu">
                             <li><a href="?action=homepage">Accueil</a></li>
                             <li><a href="?action=clubs">Clubs</a></li>
-                            <li><a href="?action=calendrier">Date RDV</a></li>
+                            <li><a href="?action=calendrierView">Date RDV</a></li>
                             <li><a href="?action=plats">Plats</a></li>
                             <li><a href="?action=tenracView">Tenrac</a></li>
                         </ul>
