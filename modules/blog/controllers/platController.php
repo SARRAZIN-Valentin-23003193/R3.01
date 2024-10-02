@@ -20,8 +20,7 @@ class platController {
         $platModel = new platsModel();
         list($plats, $totalPosts) = $platModel->fetchPlats($currentPage, $postsPerPage);
         $totalPages = ceil($totalPosts / $postsPerPage);
-
-        return ['plats' => $plats, 'totalPages' => $totalPages];
+        renderClubs($plats, $totalPages);
     }
 
     //ajout des plats

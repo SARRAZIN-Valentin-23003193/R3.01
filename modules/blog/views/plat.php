@@ -25,7 +25,7 @@ class plat {
                     $postsPerPage = 6;
                     $controller->drawPlat($currentPage, $postsPerPage);
                 } else {
-                    echo "Erreur : La classe ClubController n'existe pas.";
+                    echo "Erreur : La classe platController n'existe pas.";
                 }
                 ?>
             </section>
