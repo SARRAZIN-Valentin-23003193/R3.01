@@ -1,6 +1,8 @@
 <?php
 
-require 'modules\blog\controllers\homepage.php';
+require 'modules/blog/controllers/Homepage.php';
+
+session_start();
 
 
 try {
@@ -8,10 +10,10 @@ try {
         $action = filter_input(INPUT_GET, 'action');
         switch ($action) {
             case 'homepage':
-                (new Blog\Controllers\Homepage\Homepage())->execute();
+                (new blog\controllers\Homepage())->execute();
         }
     }
-    (new Blog\Controllers\Homepage\Homepage())->execute();
+    (new blog\controllers\Homepage())->execute();
 } catch (\Exception $e) {
     echo $e->getMessage();
 }
