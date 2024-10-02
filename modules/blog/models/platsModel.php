@@ -1,8 +1,7 @@
 <?php
 
 class platsModel{
-    function connectDB()
-    {
+    public function connectDB(){
         $pwd = "projetwebtenrac";
         $user = "tenrac45";
         $host = "mysql-tenrac45.alwaysdata.net";
@@ -19,8 +18,7 @@ class platsModel{
     }
 
 //affiche les plats avec leur sauce, accompagnements et ingredients
-    function drawPlat($currentPage = 1, $postsPerPage = 5)
-    {
+    public function drawPlat($currentPage = 1, $postsPerPage = 5) {
         $dbLink = connectDB();
         //nombre total de plats
         $result = mysqli_query($dbLink, 'SELECT COUNT(*) as count FROM Plat');
