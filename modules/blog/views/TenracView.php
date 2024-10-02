@@ -32,7 +32,8 @@ class TenracView {
         <label><input type="text" name="recherche"></label>
         <button type="submit">Rechercher</button>
     </form>
-    <form action="../controllers/TenracController.php" method="post">
+
+    <form action="?action=ajoutTenrac" method="post">
         <label>Nom du tenrac<input type="text" name="nom"></label>
         <label>Numéro de téléphone<input type="text" name="num"></label>
         <label>Mail<input type="text" name="mail"></label>

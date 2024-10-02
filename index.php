@@ -30,6 +30,9 @@ try {
             case 'tenracView':
                 (new blog\controllers\TenracController())->execute();
                 break;
+            case 'ajoutTenrac':
+                (new blog\controllers\TenracController())->ajoutTenrac();
+                break;
             case 'calendrierView':
                 (new \blog\controllers\CalendrierController())->execute();
                 break;
