@@ -4,7 +4,7 @@ require '../models/TenracModel.php';
 
 class TenracController {
     private $tenracModel; //Stock le modèle
-    private $nom; //Fair ça
+    //private $nom; Fait ça
 
     public function __construct(){
         $this->tenracModel = new TenracModel(); //Initialise le modèle
