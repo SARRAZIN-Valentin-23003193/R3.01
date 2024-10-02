@@ -1,0 +1,61 @@
+.Plat {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    margin: 2%;
+    padding: 2%;
+    width: 40%;
+    height: 40%;
+    background-color: #f5f5f5;
+    border: solid;
+    border-radius: 30px;
+}
+
+.Plat .Nom_Plat {
+    font-size: 2em;
+    font-weight: bold;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    border-bottom: solid;
+}
+
+.Plat .Sauce_Accompagnement {
+    font-size: 1.5em;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    border-bottom: solid;
+}
+
+.Plat .Ingredient {
+    font-size: 1.5em;
+    color: #000;
+    margin: 0;
+    padding: 0;
+    border-bottom: solid;
+}
+
+.Plat .Accompagnement {
+    font-size: 1.5em;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.Plat .boutonfin {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+    margin-top: 4%;
+}
+
+.buttonPages {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-content: center;
+    margin-top: 4%;
+}

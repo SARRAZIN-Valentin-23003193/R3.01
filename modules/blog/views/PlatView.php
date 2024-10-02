@@ -11,19 +11,8 @@ class PlatView {
     public function show() : void {
         ob_start();
 ?>
-        <?php
-        if(isset($_SESSION['suid'])) {
-            ?>
-            <form action="?action=ajouterPlat" method="post">
-                <label>nom du Club <input type="text" name="nomPlat" required></label>
-                <label>Adresse <input type="text" name="adressPlat" required></label>
-                <button type="submit">envoyer</button>
-            </form>
-            <?php
-        }
-        ?>
-
         <main>
+            <link rel="stylesheet" href="<?php echo base_url('_assets/styles/platStyle.css'); ?>">
             <section id="bloc">
                 <?php
                 if (class_exists('blog\controllers\PlatController')) {
