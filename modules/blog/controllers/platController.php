@@ -2,6 +2,7 @@
 
 namespace blog\controllers;
 
+use blog\views\plat;
 
 require 'modules/blog/models/platsModel.php';
 
@@ -10,10 +11,6 @@ class platController {
 
     public function __construct() {
         $this->model = new platsModel(); // Initialisation du modèle
-    }
-
-    public function show() : void {
-        return;
     }
 
     //ajout des plats
@@ -53,5 +50,9 @@ class platController {
                 echo "Identifiant club manquant.";
             }
         }
+    }
+
+    public function execute() : void {
+        (new plat())->show();
     }
 }
