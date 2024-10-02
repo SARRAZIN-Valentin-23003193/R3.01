@@ -15,6 +15,27 @@ class ClubModel {
         }
     }
 
+    public function fetchClubs($currentPage = 1, $postsPerPage = 5) {
+        // Get the total number of posts
+        $result = mysqli_query($this->conn, 'SELECT COUNT(*) as count FROM Club');
+        $row = mysqli_fetch_assoc($result);
+        $totalPosts = (int)$row['count'];
+
+        // Calculate the offset
+        $offset = ($currentPage - 1) * $postsPerPage;
+
+        // Fetch the posts for the current page
+        $query = 'SELECT Clubid, Nom_C, Adresse_C FROM Club LIMIT ' . $postsPerPage . ' OFFSET ' . $offset;
+        $result = mysqli_query($this->conn, $query);
+
+        $clubs = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $clubs[] = $row;
+        }
+
+        return [$clubs, $totalPosts];
+    }
+
     // Méthode pour ajouter un club
     public function ajouterClub($nom, $lieux) {
         try {
