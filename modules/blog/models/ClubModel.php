@@ -43,7 +43,6 @@ class ClubModel {
             $stmt->bindParam(':nom', $nom);
             $stmt->bindParam(':lieux', $lieux);
             $stmt->execute();
-            header('Location: https://tenrac45.alwaysdata.net/modules/blog/views/structure.php/');
         } catch (PDOException $e) {
             echo "Erreur lors de l'ajout : " . $e->getMessage();
         }
@@ -58,7 +57,6 @@ class ClubModel {
             $stmt->bindParam(':ClubAdresse', $ClubAdresse);
             $stmt->bindParam(':ClubNom', $ClubNom);
             $stmt->execute();
-            header('Location: https://tenrac45.alwaysdata.net/modules/blog/views/structure.php/');
         } catch (PDOException $e) {
             echo "Erreur lors de la modification : " . $e->getMessage();
         }
@@ -71,7 +69,6 @@ class ClubModel {
             $stmt = $this->conn->prepare($sql);
             $stmt->bindParam(':idSup', $idSup);
             $stmt->execute();
-            header('Location: https://tenrac45.alwaysdata.net/modules/blog/views/structure.php/');
         } catch (PDOException $e) {
             echo "Erreur lors de la suppression : " . $e->getMessage();
         }

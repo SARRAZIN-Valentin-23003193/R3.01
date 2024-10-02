@@ -68,8 +68,10 @@ class ClubController {
 
             if (!empty($idSup)) {
                 $this->clubModel->supprimerClub($idSup);
+                header('Location: https://tenrac45.alwaysdata.net/index.php/?action=clubs');
+                exit();
             } else {
-                echo "Identifiant club manquant.";
+                //echo "Identifiant club manquant.";
             }
         }
     }

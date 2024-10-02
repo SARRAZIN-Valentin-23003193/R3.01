@@ -24,6 +24,9 @@ try {
             case 'ajouterClub':
                 (new blog\controllers\ClubController())->ajouterClub();
                 break;
+            case 'supClub':
+                (new blog\controllers\ClubController())->supprimerClub();
+                break;
             case 'tenracView':
                 (new blog\controllers\TenracController())->execute();
                 break;
