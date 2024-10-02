@@ -5,6 +5,7 @@ require 'modules/blog/controllers/Homepage.php';
 require 'modules/blog/controllers/ClubController.php';
 require 'modules/blog/controllers/TenracController.php';
 require 'modules/blog/controllers/Controller_Calendrier.php';
+require 'modules/blog/controllers/Authentification_Controller.php';
 require 'modules/blog/controllers/platController.php';
 
 session_start();
@@ -34,6 +35,15 @@ try {
                 break;
             default:
                 (new blog\controllers\Homepage())->execute();
+            case 'authentification':
+                (new blog\controllers\Authentification_Controller())->execute();
+                break;
+            case 'login':
+                (new blog\controllers\Authentification_Controller())->connexion();
+                break;
+            case 'logout':
+                (new blog\controllers\Authentification_Controller())->deconnexion();
+                break;
         }
     }else {
         (new blog\controllers\Homepage())->execute();
