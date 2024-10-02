@@ -19,6 +19,10 @@ addHeader();
             insertLigne($currentPage, $tenracsPerPage);
             ?>
         </table>
+        <form action="../models/rechercheTenracModel.php" method="post">
+            <label><input type="text" name="recherche"></label>
+            <button type="submit">Rechercher</button>
+        </form>
         <form action="../models/ajout-tenrac.php" method="post">
             <label>Nom du tenrac<input type="text" name="nom"></label>
             <label>Numéro de téléphone<input type="text" name="num"></label>
