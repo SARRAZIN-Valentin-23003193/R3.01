@@ -29,19 +29,18 @@ class platsModel {
         $offset = ($currentPage - 1) * $postsPerPage;
 
         // Fetch the posts for the current page
-        $query = 'SELECT Plat.Nom_P, Sauce_Accompagnement.Nom_S, Ingredient.Nom_I, Accompagnement.Nom_Accomp
+        $stmt = $this->conn->prepare('SELECT Plat.Nom_P, Sauce_Accompagnement.Nom_S, Ingredient.Nom_I, Accompagnement.Nom_Accomp
                 FROM Plat
                 JOIN Accompagne ON Plat.Plat_id = Accompagne.Plat_id
                 JOIN Accompagnement ON Accompagne.Accomp_id = Accompagnement.Accomp_id
                 JOIN Sauce ON Plat.Plat_id = Sauce.Plat_id
                 JOIN Sauce_Accompagnement ON Sauce.Sauce_id = Sauce_Accompagnement.Sauce_id
-                JOIN Ingredient ON Sauce_Accompagnement.Ingredient_id = Ingredient.Ingredient_id LIMIT ' . $postsPerPage . ' OFFSET ' . $offset;
-        $result = mysqli_query($this->conn, $query);
+                JOIN Ingredient ON Sauce_Accompagnement.Ingredient_id = Ingredient.Ingredient_id LIMIT :limit OFFSET :offset');
+        $stmt->bindValue(':limit', $postsPerPage, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
 
-        $plats = [];
-        while ($row = mysqli_fetch_assoc($result)) {
-            $plats[] = $row;
-        }
+        $plats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return [$plats, $totalPosts];
     }
