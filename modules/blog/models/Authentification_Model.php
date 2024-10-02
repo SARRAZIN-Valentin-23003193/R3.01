@@ -1,4 +1,7 @@
 <?php
+namespace blog\models;
+use PDO;
+use PDOException;
 
 class Authentification_Model {
     private $db; // pour la connexion à la base de données

@@ -1,6 +1,9 @@
 <?php
 
 namespace blog\models;
+use PDO;
+use PDOException;
+
 class platsModel {
     private $host = "mysql-tenrac45.alwaysdata.net";
     private $username = "tenrac45";
