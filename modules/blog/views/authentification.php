@@ -1,17 +1,12 @@
 <?php
 require __DIR__ . '/HtmlLayout.php';
-//session_start();
-if(isset($_SESSION['suid'])) {
-    header('Location: /index.php');
-}
+require_once '../controllers/Authentification_Controller.php';
 start_page("L'ordre des tenracs");
 addHeader();
-if (isset($_SESSION['error'])) {
-    echo $_SESSION['error']; // Afficher le message d'erreur
-    unset($_SESSION['error']); // Supprimer le message après l'affichage
-}
-?>
-<form action="/modules/blog/models/test-passModel.php" method="post" >
+if (isset($error)): ?>
+    <p style="color: red;"><?php echo $error; ?></p>
+<?php endif; ?>
+<form action="../controllers/Authentification_Controller.php" method="post" >
     <label for="identifiant">Identifiant :</label>
     <input type="text" id="identifiant" name="identifiant" required>
 
