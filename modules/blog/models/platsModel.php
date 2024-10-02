@@ -56,21 +56,4 @@ class Plat {
     }
 }
 
-// Utilisation de la classe Plat
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $plat = new Plat();
-
-    if (isset($_POST['ajouter'])) {
-        $nom = $_POST['nomplat'];
-        $plat->ajouterPlat($nom);
-    } elseif (isset($_POST['modifier'])) {
-        $idModif = $_POST['Clubid'];
-        $PlatNom = $_POST['PlatNom'];
-        $plat->modifierPlat($idModif, $PlatNom);
-    } elseif (isset($_POST['supprimer'])) {
-        $idSup = $_POST['Plat_id'];
-        $plat->supprimerPLat($idSup);
-    }
-}
 ?>

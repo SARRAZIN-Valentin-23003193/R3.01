@@ -10,26 +10,42 @@ class platController {
         $this->model = new platsModel(); // Initialisation du modèle
     }
 
-    public function afficherPLat() {
-        // récupère les plats depuis le modèle
-        $repas = $this->model->drawPlat();
+    //ajout des plats
+    public function ajouterPlat() {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $nom = $_POST['nomplat'];
 
-        // Préparation des data pour l'affichage de chaque plats
-        foreach ($repas as $repas_item) {
-            $events[] = [
-                'title' => 'Repas à ' . $repas_item['Adresse_Partenaire'], // Titre de l'événement
-                'description' => 'Plats : ' . $repas_item['Plats'], // Description de l'événement
-                'start' => $repas_item['Date_R'], // Date du repas
-                'allDay' => true // On part du principe que l'évènement dure toute la journée
-            ];
+            if (!empty($nom)) {
+                $this->platsModel->ajouterPlat($nom);
+            } else {
+                echo "Veuillez remplir tous les champs.";
+            }
         }
+    }
 
-        // appel la vue
-        require '../views/plat.php';
+    // modification des plats
+    public function modifierClub() {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $idModif = $_POST['Plat_id'];
+            $PlatNom = $_POST['PlatNom'];
+            if (!empty($idModif) && !empty($Platnom)) {
+                $this->platsModel->modifierPlat($idModif, $PlatNom);
+            } else {
+                echo "Veuillez remplir tous les champs.";
+            }
+        }
+    }
+
+    //destruction des plats
+    public function supprimerPlat() {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $idSup = $_POST['Plat_id'];
+
+            if (!empty($idSup)) {
+                $this->platsModel->supprimerPlat($idSup);
+            } else {
+                echo "Identifiant club manquant.";
+            }
+        }
     }
 }
-
-// l'instance "controller" prends la valeur du contrôleur calendrier et appel de la méthode d'affichage
-$controller = new Controller_Calendrier();
-$controller->afficherCalendrier();
-?>
