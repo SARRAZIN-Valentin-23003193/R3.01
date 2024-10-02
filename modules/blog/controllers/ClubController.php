@@ -1,5 +1,6 @@
 <?php
 require_once '../models/ClubModel.php'; // Inclure le modèle Club
+require '../views/clubView.php';
 
 class ClubController {
 
@@ -8,6 +9,14 @@ class ClubController {
     // Constructeur qui initialise le modèle
     public function __construct() {
         $this->clubModel = new ClubModel();  // Instanciation du modèle Club
+    }
+
+    function drawClub($currentPage = 1, $postsPerPage = 5) {
+        $clubModel = new ClubModel();
+        list($clubs, $totalPosts) = $clubModel->fetchClubs($currentPage, $postsPerPage);
+
+        $totalPages = ceil($totalPosts / $postsPerPage);
+        renderClubs($clubs, $totalPages);
     }
 
     // Méthode pour ajouter un club
@@ -39,6 +48,7 @@ class ClubController {
         }
     }
 
+
     // Méthode pour supprimer un club
     public function supprimerClub() {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -50,5 +60,22 @@ class ClubController {
                 echo "Identifiant club manquant.";
             }
         }
+    }
+}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $club = new ClubModel();
+
+    if (isset($_POST['ajouter'])) {
+        $nom = $_POST['nomclub'];
+        $lieux = $_POST['adressclub'];
+        $club->ajouterClub($nom, $lieux);
+    } elseif (isset($_POST['modifier'])) {
+        $idModif = $_POST['Clubid'];
+        $ClubNom = $_POST['ClubNom'];
+        $ClubAdresse = $_POST['ClubAdresse'];
+        $club->modifierClub($idModif, $ClubAdresse, $ClubNom);
+    } elseif (isset($_POST['supprimer'])) {
+        $idSup = $_POST['Clubid'];
+        $club->supprimerClub($idSup);
     }
 }
