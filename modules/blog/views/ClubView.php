@@ -5,7 +5,7 @@ namespace blog\views;
 
 use blog\controllers\ClubController;
 
-class clubView {
+class ClubView {
 
     public function show() {
         ob_start();
