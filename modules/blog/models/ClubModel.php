@@ -15,23 +15,22 @@ class ClubModel {
         }
     }
 
-    public function fetchClubs($currentPage = 1, $postsPerPage = 5) {
+    public function fetchClubs($currentPage = 1, $postsPerPage = 5): array {
         // Get the total number of posts
-        $result = mysqli_query($this->conn, 'SELECT COUNT(*) as count FROM Club');
-        $row = mysqli_fetch_assoc($result);
+        $stmt = $this->conn->query('SELECT COUNT(*) as count FROM Club');
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $totalPosts = (int)$row['count'];
 
         // Calculate the offset
         $offset = ($currentPage - 1) * $postsPerPage;
 
         // Fetch the posts for the current page
-        $query = 'SELECT Clubid, Nom_C, Adresse_C FROM Club LIMIT ' . $postsPerPage . ' OFFSET ' . $offset;
-        $result = mysqli_query($this->conn, $query);
+        $stmt = $this->conn->prepare('SELECT Clubid, Nom_C, Adresse_C FROM Club LIMIT :limit OFFSET :offset');
+        $stmt->bindValue(':limit', $postsPerPage, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
 
-        $clubs = [];
-        while ($row = mysqli_fetch_assoc($result)) {
-            $clubs[] = $row;
-        }
+        $clubs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         return [$clubs, $totalPosts];
     }

@@ -6,18 +6,17 @@ namespace blog\controllers;
 use TenracModel;
 
 require 'modules/blog/models/TenracModel.php';
-require 'modules/blog/views/tenrac.php';
+require 'modules/blog/views/TenracView.php';
 
 class TenracController {
     private $tenracModel; //Stock le modèle
-    //private $nom; Fait ça
 
     public function __construct(){
         $this->tenracModel = new TenracModel(); //Initialise le modèle
     }
 
     public function execute() : void {
-        (new \blog\views\tenrac())->show();
+        (new \blog\views\TenracView())->show();
     }
 
     public function ajoutTenrac() {
@@ -68,15 +67,13 @@ class TenracController {
         }
     }
 
-
-    public function afficherTenrac(){
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Récupérer les valeurs du formulaire
-            $nom = $_POST['nomclub'];
-            $lieux = $_POST['adressclub'];
-        }
+    public function afficherTenrac($currentPage = 1, $postsPerPage = 5) {
+        require_once 'modules/blog/views/TenracInit.php';
+        $clubModel = new TenracModel();
+        list($clubs, $totalPosts) = $clubModel->recupTenrac($currentPage, $postsPerPage);
+        $totalPages = ceil($totalPosts / $postsPerPage);
+        renderTenracs($clubs, $totalPages);
     }
-    // Utilisation de la classe TenracModel
 
 
 }

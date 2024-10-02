@@ -21,10 +21,10 @@ class ClubController {
         (new \blog\views\structure())->show();
     }
 
-    function drawClub($currentPage = 1, $postsPerPage = 5) {
+    public function drawClub($currentPage = 1, $postsPerPage = 5) {
+        require_once 'modules/blog/views/clubView.php';
         $clubModel = new ClubModel();
         list($clubs, $totalPosts) = $clubModel->fetchClubs($currentPage, $postsPerPage);
-
         $totalPages = ceil($totalPosts / $postsPerPage);
         renderClubs($clubs, $totalPages);
     }
@@ -37,7 +37,7 @@ class ClubController {
 
             if (!empty($nom) && !empty($lieux)) {
                 $this->clubModel->ajouterClub($nom, $lieux);
-                header('Location: https://tenrac45.alwaysdata.net/?action=clubs');
+                header('Location: https://tenrac45.alwaysdata.net/index.php/?action=clubs');
                 exit();
             } else {
                 echo "Veuillez remplir tous les champs.";
