@@ -22,7 +22,7 @@ public function show() {
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>Accueil</title>
+    <title><?php echo $this->title ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <link rel="stylesheet" href="<?php echo base_url('_assets/styles/style.css'); ?>">
@@ -42,9 +42,9 @@ public function show() {
 
                     <li><a href="?action=homepage">Accueil</a></li>
                     <li><a href="?action=clubs">Clubs</a></li>
-                    <li><a href="?action=homepage">Date RDV</a></li>
+                    <li><a href="?action=calendrier">Date RDV</a></li>
                     <li><a href="?action=homepage">Plats</a></li>
-                    <li><a href="?action=homepage">Tenrac</a></li>
+                    <li><a href="?action=tenrac">Tenrac</a></li>
                     <li><a href="#">A propos</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
