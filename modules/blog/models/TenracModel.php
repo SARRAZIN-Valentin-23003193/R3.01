@@ -16,8 +16,25 @@ class TenracModel {
         }
     }
 
-    public function recupTenrac() {
+    public function recupTenrac($currentPage = 1, $postsPerPage = 5) {
+        // Get the total number of posts
+        $result = mysqli_query($this->conn, 'SELECT COUNT(*) as count FROM Tenracs');
+        $row = mysqli_fetch_assoc($result);
+        $totalPosts = (int)$row['count'];
 
+        // Calculate the offset
+        $offset = ($currentPage - 1) * $postsPerPage;
+
+        // Fetch the posts for the current page
+        $query = 'SELECT Nom_T, NumTel, Courriel, Adresse_T, Grade, Titre, Rang, Dignite FROM Tenracs LIMIT ' . $postsPerPage . ' OFFSET ' . $offset;
+        $result = mysqli_query($this->conn, $query);
+
+        $clubs = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $clubs[] = $row;
+        }
+
+        return [$clubs, $totalPosts];
     }
 
     // Méthode pour ajouter un tenrac
