@@ -1,6 +1,8 @@
 <?php
 
+
 require 'modules/blog/controllers/Homepage.php';
+require 'modules/blog/controllers/ClubController.php';
 
 session_start();
 
@@ -11,6 +13,9 @@ try {
         switch ($action) {
             case 'homepage':
                 (new blog\controllers\Homepage())->execute();
+                break;
+            case 'clubs':
+                (new blog\controllers\ClubController())->execute();
         }
     }else {
         (new blog\controllers\Homepage())->execute();
