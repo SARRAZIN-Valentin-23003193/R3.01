@@ -12,8 +12,9 @@ try {
             case 'homepage':
                 (new blog\controllers\Homepage())->execute();
         }
+    }else {
+        (new blog\controllers\Homepage())->execute();
     }
-    (new blog\controllers\Homepage())->execute();
 } catch (\Exception $e) {
     echo $e->getMessage();
 }

@@ -2,7 +2,7 @@
 
 namespace blog\controllers;
 
-require 'modules/blog/views/homepage.php';
+require 'modules/blog/views/Homepage.php';
 
 
 class Homepage {
