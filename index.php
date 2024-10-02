@@ -1,12 +1,12 @@
 <?php
 
 
-require 'modules/blog/controllers/Homepage.php';
+require 'modules/blog/controllers/HomepageController.php';
 require 'modules/blog/controllers/ClubController.php';
 require 'modules/blog/controllers/TenracController.php';
-require 'modules/blog/controllers/Controller_Calendrier.php';
-require 'modules/blog/controllers/Authentification_Controller.php';
-require 'modules/blog/controllers/platController.php';
+require 'modules/blog/controllers/CalendrierController.php';
+require 'modules/blog/controllers/AuthentificationController.php';
+require 'modules/blog/controllers/PlatController.php';
 
 session_start();
 
@@ -16,7 +16,7 @@ try {
         $action = filter_input(INPUT_GET, 'action');
         switch ($action) {
             case 'homepage':
-                (new blog\controllers\Homepage())->execute();
+                (new blog\controllers\HomepageController())->execute();
                 break;
             case 'clubs':
                 (new blog\controllers\ClubController())->execute();
@@ -27,26 +27,26 @@ try {
             case 'tenracView':
                 (new blog\controllers\TenracController())->execute();
                 break;
-            case 'calendrier':
-                (new \blog\controllers\Controller_Calendrier())->execute();
+            case 'calendrierView':
+                (new \blog\controllers\CalendrierController())->execute();
                 break;
             case 'plats':
                 (new blog\controllers\platController())->execute();
                 break;
-            default:
-                (new blog\controllers\Homepage())->execute();
             case 'authentification':
-                (new blog\controllers\Authentification_Controller())->execute();
+                (new blog\controllers\AuthentificationController())->execute();
                 break;
             case 'login':
-                (new blog\controllers\Authentification_Controller())->connexion();
+                (new blog\controllers\AuthentificationController())->connexion();
                 break;
             case 'logout':
-                (new blog\controllers\Authentification_Controller())->deconnexion();
+                (new blog\controllers\AuthentificationController())->deconnexion();
                 break;
+            default:
+                (new blog\controllers\HomepageController())->execute();
         }
     }else {
-        (new blog\controllers\Homepage())->execute();
+        (new blog\controllers\HomepageController())->execute();
     }
 } catch (\Exception $e) {
     echo $e->getMessage();

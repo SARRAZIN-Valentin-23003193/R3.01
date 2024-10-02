@@ -2,7 +2,7 @@
 
 namespace blog\views;
 
-class calendrier {
+class calendrierView {
 
     private $events;
 

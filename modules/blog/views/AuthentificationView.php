@@ -2,7 +2,7 @@
 
 namespace blog\views;
 
-class Authentification_View {
+class AuthentificationView {
     public function show($error = null) { // Accepte un paramètre pour l'erreur
         if (isset($_SESSION['suid'])){
             header('location: https://tenrac45.alwaysdata.net/index.php');

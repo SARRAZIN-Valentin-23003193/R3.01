@@ -38,12 +38,11 @@ class HtmlLayout {
                     <span></span>
                     <div id="div_menu">
                         <ul id="menu">
-
                             <li><a href="?action=homepage">Accueil</a></li>
                             <li><a href="?action=clubs">Clubs</a></li>
                             <li><a href="?action=calendrier">Date RDV</a></li>
                             <li><a href="?action=plats">Plats</a></li>
-                            <li><a href="?action=tenrac">Tenrac</a></li>
+                            <li><a href="?action=tenracView">Tenrac</a></li>
                         </ul>
                     </div>
                 </div>
@@ -56,52 +55,20 @@ class HtmlLayout {
             <section>
                 <?php
                 if(isset($_SESSION['suid'])) {
-                    ?><a href="<?php echo base_url('modules/blog/controllers/deconnexionController.php'); ?>">
-                    <img  src="<?php echo base_url('_assets/images/login_icon.webp');?>" alt="Login logo"  class="logo_login_header"/>
+                ?>
+                    <a href="?action=logout" >
+                        <img  src="<?php echo base_url('_assets/images/login_icon.webp');?>" alt="Login logo"  class="logo_login_header"/>
                     Se déconnecter</a>
-                    <?php
+                <?php
                 } else {
-                    ?><a href="<?php echo base_url('modules/blog/views/authentification.php'); ?>" >
-                    <img  src="<?php echo base_url('_assets/images/login_icon.webp');?>" alt="Login logo"  class="logo_login_header"/>
+                ?>
+                    <a href="?action=authentification" >
+                        <img  src="<?php echo base_url('_assets/images/login_icon.webp');?>" alt="Login logo"  class="logo_login_header"/>
                     Se connecter</a>
-                    <?php
+                <?php
                 }
                 ?>
             </section>
-        </header>
-                    <li><a href="?action=homepage">Accueil</a></li>
-                    <li><a href="?action=clubs">Clubs</a></li>
-                    <li><a href="?action=calendrier">Date RDV</a></li>
-                    <li><a href="?action=homepage">Plats</a></li>
-                    <li><a href="?action=tenrac">Tenrac</a></li>
-                    <li><a href="#">A propos</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-        <img src="<?php echo base_url('_assets/images/logo_tenrac_sans_fond.webp');?>" class="logo_tenrac_header" alt="logo tenrac">
-    </section>
-    <section class="MainTitle">
-        <h1>L'Ordre des Tenracs</h1>
-        <h2>Bienvenue sur notre site</h2>
-    </section>
-    <section>
-        <?php
-        if(isset($_SESSION['suid'])) {
-        ?>
-            <a href="?action=logout" >
-                <img  src="<?php echo base_url('_assets/images/login_icon.webp');?>" alt="Login logo"  class="logo_login_header"/>
-            Se déconnecter</a>
-        <?php
-        } else {
-        ?>
-            <a href="?action=authentification" >
-                <img  src="<?php echo base_url('_assets/images/login_icon.webp');?>" alt="Login logo"  class="logo_login_header"/>
-            Se connecter</a>
-        <?php
-        }
-        ?>
-    </section>
 </header>
 
         <?= $this->content; ?>

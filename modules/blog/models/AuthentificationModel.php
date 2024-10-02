@@ -3,7 +3,7 @@ namespace blog\models;
 use PDO;
 use PDOException;
 
-class Authentification_Model {
+class AuthentificationModel {
     private $db; // pour la connexion à la base de données
 
     public function __construct()

@@ -5,7 +5,7 @@ namespace blog\controllers;
 use ClubModel;
 
 require 'modules/blog/models/ClubModel.php'; // Inclure le modèle Club
-require 'modules/blog/views/structure.php';
+require 'modules/blog/views/ClubView.php';
 
 class ClubController {
 
@@ -18,11 +18,11 @@ class ClubController {
 
     public function execute() : void
     {
-        (new \blog\views\structure())->show();
+        (new \blog\views\clubView())->show();
     }
 
     public function drawClub($currentPage = 1, $postsPerPage = 5) {
-        require_once 'modules/blog/views/clubView.php';
+        require_once 'modules/blog/views/ClubGenerator.php';
         $clubModel = new ClubModel();
         list($clubs, $totalPosts) = $clubModel->fetchClubs($currentPage, $postsPerPage);
         $totalPages = ceil($totalPosts / $postsPerPage);

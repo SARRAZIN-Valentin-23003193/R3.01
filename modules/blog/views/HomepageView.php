@@ -3,7 +3,7 @@ namespace blog\views;
 
 require_once 'HtmlLayout.php';
 
-class Homepage {
+class HomepageView {
 
     function show() : void {
         ob_start();

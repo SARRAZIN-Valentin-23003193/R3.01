@@ -1,20 +1,20 @@
 <?php
 namespace blog\controllers;
-use blog\models\Authentification_Model;
-use blog\views\Authentification_View;
-require_once 'modules/blog/models/Authentification_Model.php';
-require_once 'modules/blog/views/Authentification_View.php';
-class Authentification_Controller {
+use blog\models\AuthentificationModel;
+use blog\views\AuthentificationView;
+require_once 'modules/blog/models/AuthentificationModel.php';
+require_once 'modules/blog/views/AuthentificationView.php';
+class AuthentificationController {
     private $userModel; // sert à stocker l'instance du modèle
     private $view; // stocke l'instance de la vue
 
     public function __construct() {
-        $this->userModel = new Authentification_Model(); // Initialisation du modèle
-        $this->view = new Authentification_View(); // Initialisation de la vue
+        $this->userModel = new AuthentificationModel(); // Initialisation du modèle
+        $this->view = new AuthentificationView(); // Initialisation de la vue
     }
 
     public function execute() : void {
-        (new \blog\views\Authentification_View())->show();
+        (new \blog\views\AuthentificationView())->show();
     }
 
     public function connexion() {
@@ -37,10 +37,10 @@ class Authentification_Controller {
                 ob_start(); // Démarre la bufferisation
                 $this->view->show($error); // Affiche la vue avec l'erreur
                 echo ob_get_clean(); // Nettoie le tampon de sortie
-                //                require 'modules/blog/views/Authentification_View.php';
+                //                require 'modules/blog/views/AuthentificationView.php';
             }
         } else {
-//            require 'modules/blog/views/Authentification_View.php';
+//            require 'modules/blog/views/AuthentificationView.php';
             ob_start(); // Démarre la bufferisation
             $this->view->show(); // Affiche la vue
             echo ob_get_clean(); // Nettoie le tampon de sortie

@@ -2,24 +2,24 @@
 
 namespace blog\controllers;
 
-use blog\views\calendrier;
-use Model_Calendrier;
+use blog\views\calendrierView;
+use CalendrierModel;
 
-require 'modules/blog/views/calendrier.php';
-require_once 'modules/blog/models/Model_Calendrier.php';
+require 'modules/blog/views/CalendrierView.php';
+require_once 'modules/blog/models/CalendrierModel.php';
 
-class Controller_Calendrier {
+class CalendrierController {
     private $model; // sert à stocker l'instance du modèle
 
     public function __construct() {
-        $this->model = new Model_Calendrier(); // Initialisation du modèle
+        $this->model = new CalendrierModel(); // Initialisation du modèle
     }
 
     public function execute() : void {
         // récupère les repas depuis le modèle
         $repas = $this->model->getRepasWithPlats();
 
-        // Préparation des data pour le calendrier
+        // Préparation des data pour le calendrierView
         $events = [];
         foreach ($repas as $repas_item) {
             $events[] = [
@@ -29,14 +29,14 @@ class Controller_Calendrier {
                 'allDay' => true // On part du principe que l'évènement dure toute la journée
             ];
         }
-        (new calendrier($events))->show();
+        (new calendrierView($events))->show();
     }
 
     public function afficherCalendrier() {
         // récupère les repas depuis le modèle
         $repas = $this->model->getRepasWithPlats();
 
-        // Préparation des data pour le calendrier
+        // Préparation des data pour le calendrierView
         $events = [];
         foreach ($repas as $repas_item) {
             $events[] = [
@@ -48,7 +48,7 @@ class Controller_Calendrier {
         }
 
         // appel la vue
-        require '../views/calendrier.php'; // Charge la vue calendrier.php
+        require '../views/CalendrierView.php'; // Charge la vue CalendrierView.php
     }
 }
 ?>

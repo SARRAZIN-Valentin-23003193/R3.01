@@ -5,7 +5,7 @@ namespace blog\views;
 use blog\controllers\platController;
 
 
-class plat {
+class platView {
 
 
     public function show() : void {

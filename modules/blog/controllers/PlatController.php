@@ -2,22 +2,22 @@
 
 namespace blog\controllers;
 
-use blog\views\plat;
+use blog\views\platView;
 use blog\models\platsModel;
 
-require 'modules/blog/models/platsModel.php';
-require 'modules/blog/views/plat.php';
+require 'modules/blog/models/PlatsModel.php';
+require 'modules/blog/views/PlatView.php';
 
-class platController {
+class PlatController {
     private $platModel; // sert à stocker l'instance du modèle
 
     public function __construct() {
-        $this->platModel = new platsModel(); // Initialisation du modèle
+        $this->platModel = new PlatsModel(); // Initialisation du modèle
     }
 
 
     function drawPlat($currentPage = 1, $postsPerPage = 5) {
-        $platModel = new platsModel();
+        $platModel = new PlatsModel();
         list($plats, $totalPosts) = $platModel->fetchPlats($currentPage, $postsPerPage);
         $totalPages = ceil($totalPosts / $postsPerPage);
         renderClubs($plats, $totalPages);
@@ -64,11 +64,11 @@ class platController {
 
 
     public function execute() : void {
-        (new plat())->show();
+        (new platView())->show();
     }
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $plat = new platsModel();
+    $plat = new PlatsModel();
 
     if (isset($_POST['ajouter'])) {
         $nom = $_POST['nomplat'];

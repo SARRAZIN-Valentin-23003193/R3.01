@@ -1,7 +1,7 @@
-/* Style général du conteneur du calendrier */
+/* Style général du conteneur du calendrierView */
 #calendar {
-    margin: 1em auto; /* permet de centrer le calendrier et met une marge autour */
-    padding: 0.5em; /* espacement dans le calendrier */
+    margin: 1em auto; /* permet de centrer le calendrierView et met une marge autour */
+    padding: 0.5em; /* espacement dans le calendrierView */
     background-color: rgba(216, 146, 29, 0.1);
     border-radius: 8px; /* arrondi les bords */
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* pour l'effet d'ombre */
@@ -64,7 +64,7 @@
     color: black;
 }
 
-/* Style des cases de jours du calendrier */
+/* Style des cases de jours du calendrierView */
 #calendar .fc-daygrid-day-frame {
     display: flex;
     flex-direction: column; /* empile les repas verticalement */
@@ -83,7 +83,7 @@
     margin-right: 5px;
 }
 
-/* Style des événements du calendrier */
+/* Style des événements du calendrierView */
 #calendar .fc-event {
     white-space: normal; /* permet au texte de se mettre sur plusieurs lignes */
     overflow: hidden; /* cache le dépassement du texte de la case */
@@ -100,7 +100,7 @@
     box-sizing: border-box; /* Inclus le padding dans la largeur totale */
 }
 
-/* Alignement des cases du calendrier */
+/* Alignement des cases du calendrierView */
 #calendar .fc-daygrid-day {
     vertical-align: top;
     padding: 0;
@@ -149,7 +149,7 @@
     background-color: rgba(255, 255, 255, 0.7);
 }
 
-/* Style des en-têtes de colonnes quand calendrier est en weekly */
+/* Style des en-têtes de colonnes quand calendrierView est en weekly */
 #calendar .fc-col-header-cell {
     background-color: rgba(216, 146, 29, 1);
     color: white;
@@ -193,7 +193,7 @@
         display: none;
     }
 
-    /* Centrage du calendrier pour les petits écrans */
+    /* Centrage du calendrierView pour les petits écrans */
     #calendar {
         max-width: 100%;
     }

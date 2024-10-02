@@ -68,7 +68,7 @@ class TenracController {
     }
 
     public function afficherTenrac($currentPage = 1, $postsPerPage = 5) {
-        require_once 'modules/blog/views/TenracInit.php';
+        require_once 'modules/blog/views/TenracGenerator.php';
         $clubModel = new TenracModel();
         list($clubs, $totalPosts) = $clubModel->recupTenrac($currentPage, $postsPerPage);
         $totalPages = ceil($totalPosts / $postsPerPage);

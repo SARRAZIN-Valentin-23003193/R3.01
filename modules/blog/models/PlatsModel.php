@@ -46,12 +46,12 @@ class platsModel {
         return [$plats, $totalPosts];
     }
 
-    // Méthode pour ajouter un plat
+    // Méthode pour ajouter un platView
     public function ajouterPlat($plat) {
         try {
-            $sql = "INSERT INTO Plat (Nom_P) VALUES (:plat)";
+            $sql = "INSERT INTO Plat (Nom_P) VALUES (:platView)";
             $stmt = $this->conn->prepare($sql);
-            $stmt->bindParam(':plat', $plat);
+            $stmt->bindParam(':platView', $plat);
             $stmt->execute();
             header('Location: https://tenrac45.alwaysdata.net/modules/blog/views/plat.php/');
         } catch (PDOException $e) {
@@ -59,7 +59,7 @@ class platsModel {
         }
     }
 
-    // Méthode pour modifier un plat
+    // Méthode pour modifier un platView
     public function modifierPlat($idModif, $Platnom) {
         try {
             $sql = "UPDATE Plat SET Nom_P = :Platnom WHERE Plat_id = :idModif";
@@ -73,7 +73,7 @@ class platsModel {
         }
     }
 
-    // Méthode pour supprimer un plat
+    // Méthode pour supprimer un platView
     public function supprimerPlat($idSup) {
         try {
             $sql = "DELETE FROM Plat WHERE Plat_id = :idSup";

@@ -1,6 +1,6 @@
 <?php
 
-class Model_Calendrier {
+class CalendrierModel {
     private $db; // pour la connexion à la base de données
 
     public function __construct() {
