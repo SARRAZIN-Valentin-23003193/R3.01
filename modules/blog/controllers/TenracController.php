@@ -59,7 +59,7 @@ class TenracController {
     }
 
 
-    public function afficherTenrac(){
+    public function afficherTenrac($nom, $num, $mail, $adresse, $grade, $titre, $rang, $dignite) {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Récupérer les valeurs du formulaire
             $nom = $_POST['nomclub'];
