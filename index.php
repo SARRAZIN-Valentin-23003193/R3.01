@@ -16,6 +16,10 @@ try {
                 break;
             case 'clubs':
                 (new blog\controllers\ClubController())->execute();
+                break;
+            case 'ajouterClub':
+                (new blog\controllers\ClubController())->ajouterClub();
+                break;
         }
     }else {
         (new blog\controllers\Homepage())->execute();
