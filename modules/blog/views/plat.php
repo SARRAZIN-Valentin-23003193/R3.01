@@ -1,8 +1,12 @@
 <?php
-require '/home/tenrac45/www/modules/blog/controllers/platController.php';
-require __DIR__ . '/HtmlLayout.php';
-start_page("L'ordre des tenracs");
-addHeader();
+
+namespace blog\views;
+
+class plat {
+
+    public function show() : void {
+        ob_start();
+
 ?>
     <main>
         <section id="ensemble_Plat">
@@ -10,7 +14,7 @@ addHeader();
         </section>
     </main>
 <?php
-addFooter();
-end_page();
-
+        (new HtmlLayout("Plats", ob_get_clean()))->show();
+    }
+}
 ?>

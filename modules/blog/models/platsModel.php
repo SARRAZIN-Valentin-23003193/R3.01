@@ -33,7 +33,7 @@ class Plat {
                 JOIN Ingredient ON Sauce_Accompagnement.Ingredient_id = Ingredient.Ingredient_id LIMIT ' . $postsPerPage . ' OFFSET ' . $offset;
         $result = mysqli_query($this->conn, $query);
 
-        plats = [];
+        $plats = [];
         while ($row = mysqli_fetch_assoc($result)) {
             $plats[] = $row;
         }

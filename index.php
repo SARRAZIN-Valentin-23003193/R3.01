@@ -4,6 +4,8 @@
 require 'modules/blog/controllers/Homepage.php';
 require 'modules/blog/controllers/ClubController.php';
 require 'modules/blog/controllers/TenracController.php';
+require 'modules/blog/controllers/Controller_Calendrier.php';
+require 'modules/blog/controllers/platController.php';
 
 session_start();
 
@@ -24,6 +26,11 @@ try {
             case 'tenrac':
                 (new blog\controllers\TenracController())->execute();
                 break;
+            case 'calendrier':
+                (new \blog\controllers\Controller_Calendrier())->execute();
+                break;
+            case 'plats':
+                (new blog\controllers\platController())->execute();
         }
     }else {
         (new blog\controllers\Homepage())->execute();

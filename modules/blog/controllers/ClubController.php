@@ -37,7 +37,7 @@ class ClubController {
 
             if (!empty($nom) && !empty($lieux)) {
                 $this->clubModel->ajouterClub($nom, $lieux);
-                header('Location: https://tenrac45.alwaysdata.net/?action=clubs');
+                header('Location: https://tenrac45.alwaysdata.net/index.php/?action=clubs');
                 exit();
             } else {
                 echo "Veuillez remplir tous les champs.";
