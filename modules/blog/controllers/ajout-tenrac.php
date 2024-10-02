@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $grade = $_POST['grade'];
     $titre = $_POST['titre'];
     $rang = $_POST['rang'];
-    $dignite = $_POST['dignite'];
+    $dignite = $_POST['Dignite'];
 
     // Appeler la fonction pour ajouter les données
     ajouterTenrac($nom, $num, $mail, $adresse, $grade, $titre, $rang, $dignite);

@@ -23,7 +23,7 @@ addHeader();
             <label><input type="text" name="recherche"></label>
             <button type="submit">Rechercher</button>
         </form>
-        <form action="../models/ajout-tenrac.php" method="post">
+        <form action="../controllers/ajout-tenrac.php" method="post">
             <label>Nom du tenrac<input type="text" name="nom"></label>
             <label>Numéro de téléphone<input type="text" name="num"></label>
             <label>Mail<input type="text" name="mail"></label>
