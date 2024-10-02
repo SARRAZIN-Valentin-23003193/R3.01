@@ -1,6 +1,5 @@
 <?php
 require __DIR__.'/../../../config.php';
-session_start();
 /***
  * Start a page
  * @param $title
@@ -57,19 +56,12 @@ function addHeader() { ?>
             <h2>Bienvenue sur notre site</h2>
         </section>
         <section>
-            <?php
-            if(isset($_SESSION['suid'])) {
-                ?><a href="<?php echo base_url('modules/blog/controllers/deconnexionController.php'); ?>">
+            <div>
+                <a href="<?php echo base_url('modules/blog/controllers/Authentification_Controller.php'); ?>" >
                     <img  src="<?php echo base_url('_assets/images/login_icon.webp');?>" alt="Login logo"  class="logo_login_header"/>
-                Se déconnecter</a>
-            <?php
-            } else {
-                ?><a href="<?php echo base_url('modules/blog/views/authentification.php'); ?>" >
-                    <img  src="<?php echo base_url('_assets/images/login_icon.webp');?>" alt="Login logo"  class="logo_login_header"/>
-                Se connecter</a>
-            <?php
-            }
-            ?>
+                <br/>Connexion/Déconnexion</a>
+
+            </div>
         </section>
     </header>
     <?php
