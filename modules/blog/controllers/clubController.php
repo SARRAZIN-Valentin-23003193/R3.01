@@ -1,5 +1,5 @@
 <?php
-require '../models/clubModel.php';
+require '../models/clubLayout.php';
 require '../models/connectDataBaseModel.php';
 
 function drawClub($currentPage = 1, $postsPerPage = 5){
