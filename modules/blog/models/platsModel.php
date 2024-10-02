@@ -1,88 +1,76 @@
 <?php
+class Plat {
+    private $host = "mysql-tenrac45.alwaysdata.net";
+    private $username = "tenrac45";
+    private $password = "projetwebtenrac";
+    private $dbname = "tenrac45_1";
+    private $conn;
 
-class platsModel{
-    public function connectDB(){
-        $pwd = "projetwebtenrac";
-        $user = "tenrac45";
-        $host = "mysql-tenrac45.alwaysdata.net";
-        $db = "tenrac45_1";
-
-        // Verifie la connection
-        $dbLink = mysqli_connect($host, $user, $pwd)
-        or die('Erreur de connexion au serveur : ' . mysqli_connect_error());
-
-        // Choix de la base
-        mysqli_select_db($dbLink, $db)
-        or die('Erreur dans la sélection de la base : ' . mysqli_error($dbLink));
-        return $dbLink;
+    public function __construct() {
+        try {
+            $this->conn = new PDO("mysql:host=$this->host;dbname=$this->dbname;charset=utf8", $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            echo "Erreur de connexion : " . $e->getMessage();
+        }
     }
 
-//affiche les plats avec leur sauce, accompagnements et ingredients
-    public function drawPlat($currentPage = 1, $postsPerPage = 5) {
-        $dbLink = connectDB();
-        //nombre total de plats
-        $result = mysqli_query($dbLink, 'SELECT COUNT(*) as count FROM Plat');
-        $row = mysqli_fetch_assoc($result);
-        $totalPosts = (int)$row['count'];
-
-        $offset = ($currentPage - 1) * $postsPerPage;
-        //récupération des plats, sauces et ingrédients
-        $query = 'SELECT Plat.Nom_P, Sauce_Accompagnement.Nom_S, Ingredient.Nom_I, Accompagnement.Nom_Accomp
-                FROM Plat
-                JOIN Accompagne ON Plat.Plat_id = Accompagne.Plat_id
-                JOIN Accompagnement ON Accompagne.Accomp_id = Accompagnement.Accomp_id
-                JOIN Sauce ON Plat.Plat_id = Sauce.Plat_id
-                JOIN Sauce_Accompagnement ON Sauce.Sauce_id = Sauce_Accompagnement.Sauce_id
-                JOIN Ingredient ON Sauce_Accompagnement.Ingredient_id = Ingredient.Ingredient_id
-                LIMIT ' . $postsPerPage . ' OFFSET ' . $offset;
-        $result = mysqli_query($dbLink, $query);
-
-        $currentPlat = null;
-        $currentSauce = null;
-        $currentAccomp = null;
-        //affiche les plats avec sauces, ingrédients et accompagnements
-        while ($row = mysqli_fetch_assoc($result)) {
-            if ($currentPlat != $row['Nom_P']) {
-                $currentPlat = $row['Nom_P'];
-                echo '<h2>' . htmlspecialchars($row['Nom_P']) . '</h2>';
-
-            }
-
-            if ($currentSauce !== $row['Nom_S']) {
-
-                $currentSauce = $row['Nom_S'];
-                if ($row['Nom_S']) {
-                    echo '<li>Sauce: ' . htmlspecialchars($row['Nom_S']) . '</li>';
-                } else {
-                    echo '<li>Sauce: aucune</li>';
-                }
-            }
-
-            if ($row['Nom_I']) {
-                echo '<li>Ingredients: ' . htmlspecialchars($row['Nom_I']) . '</li>';
-            }
-
-            if ($currentAccomp !== $row['Nom_Accomp']) {
-
-                $currentAccomp = $row['Nom_Accomp'];
-                if ($row['Nom_Accomp']) {
-                    echo '<li>Accompagnement: ' . htmlspecialchars($row['Nom_Accomp']) . '</li>';
-                } else {
-                    echo '<li>Accompagnement: aucun</li>';
-                }
-            }
+    // Méthode pour ajouter un plat
+    public function ajouterPlat($plat) {
+        try {
+            $sql = "INSERT INTO Plat (Nom_P) VALUES (:plat)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':plat', $plat);
+            $stmt->execute();
+            header('Location: https://tenrac45.alwaysdata.net/modules/blog/views/plat.php/');
+        } catch (PDOException $e) {
+            echo "Erreur lors de l'ajout : " . $e->getMessage();
         }
-
-
-        $totalPages = ceil($totalPosts / $postsPerPage);
-        for ($i = 1; $i <= $totalPages; $i++) {
-            echo '<a href="?page=' . $i . '">' . $i . '</a> ';
-        }
-
-        mysqli_close($dbLink);
     }
 
+    // Méthode pour modifier un plat
+    public function modifierPlat($idModif, $Platnom) {
+        try {
+            $sql = "UPDATE Plat SET Nom_P = :Platnom WHERE Plat_id = :idModif";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':idModif', $idModif);
+            $stmt->bindParam(':Platnom', $Platnom);
+            $stmt->execute();
+            header('Location: https://tenrac45.alwaysdata.net/modules/blog/views/plat.php/');
+        } catch (PDOException $e) {
+            echo "Erreur lors de la modification : " . $e->getMessage();
+        }
+    }
 
+    // Méthode pour supprimer un plat
+    public function supprimerPlat($idSup) {
+        try {
+            $sql = "DELETE FROM Plat WHERE Plat_id = :idSup";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':idSup', $idSup);
+            $stmt->execute();
+            header('Location: https://tenrac45.alwaysdata.net/modules/blog/views/plat.php/');
+        } catch (PDOException $e) {
+            echo "Erreur lors de la suppression : " . $e->getMessage();
+        }
+    }
 }
 
+// Utilisation de la classe Plat
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $plat = new Plat();
+
+    if (isset($_POST['ajouter'])) {
+        $nom = $_POST['nomplat'];
+        $plat->ajouterPlat($nom);
+    } elseif (isset($_POST['modifier'])) {
+        $idModif = $_POST['Clubid'];
+        $PlatNom = $_POST['PlatNom'];
+        $plat->modifierPlat($idModif, $PlatNom);
+    } elseif (isset($_POST['supprimer'])) {
+        $idSup = $_POST['Plat_id'];
+        $plat->supprimerPLat($idSup);
+    }
+}
+?>
