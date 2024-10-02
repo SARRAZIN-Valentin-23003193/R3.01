@@ -15,6 +15,10 @@ class TenracModel {
         }
     }
 
+    public function recupTenrac() {
+
+    }
+
     // Méthode pour ajouter un tenrac
     public function ajouterTenrac($nom, $num, $mail, $adresse, $grade, $titre, $rang, $dignite) {
         // Connexion à la base de données (adapter les valeurs de connexion)
@@ -80,38 +84,6 @@ class TenracModel {
         } catch (PDOException $e) {
             echo "Erreur lors de la suppression : " . $e->getMessage();
         }
-    }
-}
-
-// Utilisation de la classe Club
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $tenrac = new TenracModel();
-
-    if (isset($_POST['ajouter'])) {
-        $nom = $_POST['nom'];
-        $num = $_POST['num'];
-        $mail = $_POST['mail'];
-        $adresse = $_POST['adresse'];
-        $grade = $_POST['grade'];
-        $titre = $_POST['titre'];
-        $rang = $_POST['rang'];
-        $dignite = $_POST['dignite'];
-        $tenrac->ajouterTenrac($nom, $num, $mail, $adresse, $grade, $titre, $rang, $dignite);
-    } elseif (isset($_POST['modifier'])) {
-        $idModif = $_POST['Tenracid'];
-        $Nom = $_POST['Nom'];
-        $Num = $_POST['Num'];
-        $Mail = $_POST['Mail'];
-        $Adresse = $_POST['Adresse'];
-        $Grade = $_POST['Grade'];
-        $Titre = $_POST['Titre'];
-        $Rang = $_POST['Rang'];
-        $Dignite = $_POST['Dignite'];
-        $tenrac->modifierTenrac($idModif, $Nom, $Num, $Mail, $Adresse, $Grade, $Titre, $Rang, $Dignite);
-    } elseif (isset($_POST['supprimer'])) {
-        $idSup = $_POST['Tenracid'];
-        $tenrac->supprimerTenrac($idSup);
     }
 }
 ?>
