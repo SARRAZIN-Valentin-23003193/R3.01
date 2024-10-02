@@ -81,21 +81,4 @@ class ClubModel {
 
 // Utilisation de la classe Club
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $club = new Club();
-
-    if (isset($_POST['ajouter'])) {
-        $nom = $_POST['nomclub'];
-        $lieux = $_POST['adressclub'];
-        $club->ajouterClub($nom, $lieux);
-    } elseif (isset($_POST['modifier'])) {
-        $idModif = $_POST['Clubid'];
-        $ClubNom = $_POST['ClubNom'];
-        $ClubAdresse = $_POST['ClubAdresse'];
-        $club->modifierClub($idModif, $ClubAdresse, $ClubNom);
-    } elseif (isset($_POST['supprimer'])) {
-        $idSup = $_POST['Clubid'];
-        $club->supprimerClub($idSup);
-    }
-}
 ?>
