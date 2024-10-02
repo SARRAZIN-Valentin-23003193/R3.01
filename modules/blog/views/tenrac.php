@@ -15,10 +15,14 @@ addHeader();
             </tr>
             <?php
             $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-            $postsPerPage = 10;
-            insertLigne($currentPage, $postsPerPage);
+            $tenracsPerPage = 10;
+            insertLigne($currentPage, $tenracsPerPage);
             ?>
         </table>
+        <form action="../models/rechercheTenracModel.php" method="post">
+            <label><input type="text" name="recherche"></label>
+            <button type="submit">Rechercher</button>
+        </form>
         <form action="../models/ajout-tenrac.php" method="post">
             <label>Nom du tenrac<input type="text" name="nom"></label>
             <label>Numéro de téléphone<input type="text" name="num"></label>
@@ -26,40 +30,40 @@ addHeader();
             <label>Adresse<input type="text" name="adresse"></label>
             <label>Grade
                 <select name="grade">
-                    <option value="affilie" selected>Affilié</option>
-                    <option value="sympathisant">Sympathisant</option>
-                    <option value="adhérent">Adhérent</option>
-                    <option value="chevalier">Chevalier</option>
-                    <option value="dame">Dame</option>
-                    <option value="grand_chevalier">Grand Chevalier</option>
-                    <option value="haute_dame">Haute Dame</option>
-                    <option value="commandeur">Commandeur</option>
-                    <option value="grand_croix">Grand'Croix</option>
+                    <option value="Affilié" selected>Affilié</option>
+                    <option value="Sympathisant">Sympathisant</option>
+                    <option value="Adhérent">Adhérent</option>
+                    <option value="Chevalier">Chevalier</option>
+                    <option value="Dame">Dame</option>
+                    <option value="Grand chevalier">Grand Chevalier</option>
+                    <option value="Haute dame">Haute Dame</option>
+                    <option value="Commandeur">Commandeur</option>
+                    <option value="Grand Croix">Grand'Croix</option>
                 </select>
             </label>
             <label>Rang
                 <select name="rang">
-                    <option value="novice" selected>Novice</option>
-                    <option value="compagnon">Compagnon</option>
+                    <option value="Novice" selected>Novice</option>
+                    <option value="Compagnon">Compagnon</option>
                 </select>
             </label>
             <label>Titre
                 <select name="titre">
-                    <option value="pasdetitre" selected>Pas de titre</option>
-                    <option value="philanthrope">Philanthrope</option>
-                    <option value="protecteur">Protecteur</option>
-                    <option value="honorable">Honorable</option>
+                    <option value="Pas de titre" selected>Pas de titre</option>
+                    <option value="Philanthrope">Philanthrope</option>
+                    <option value="Protecteur">Protecteur</option>
+                    <option value="Honorable">Honorable</option>
                 </select>
             </label>
             <label>Dignité
                 <select name="dignite">
-                    <option value="pasdedignite" selected>Pas de dignité</option>
-                    <option value="maitre">Maître</option>
-                    <option value="grand_chancelier">Grand Chancelier</option>
-                    <option value="grand_maitre">Grand Maître</option>
+                    <option value="Pas de dignite" selected>Pas de dignité</option>
+                    <option value="Maitre">Maître</option>
+                    <option value="Grand Chancelier">Grand Chancelier</option>
+                    <option value="Grand Maitre">Grand Maître</option>
                 </select>
             </label>
-            <button type="submit">envoyer</button>
+            <button type="submit">Ajouter le Tenrac</button>
         </form>
     </div>
 </div>

@@ -16,6 +16,7 @@ function start_page($title) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <link rel="stylesheet" href="<?php echo base_url('_assets/styles/style.css'); ?>">
+    <link rel="icon" href="<?php echo base_url('_assets/images/icons/logo_tenrac_sans_fond.ico'); ?>" type="image/x-icon">
 </head>
 <body>
 

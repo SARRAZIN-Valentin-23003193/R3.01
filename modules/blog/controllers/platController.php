@@ -15,7 +15,7 @@ function connectDB(){
     return $dbLink;
 }
 
-//affiche les plats avec leur accompagnements
+//affiche les plats avec leur sauce, accompagnements et ingredients
 function drawPlat($currentPage = 1, $postsPerPage = 5){
     $dbLink = connectDB();
     //nombre total de plats
@@ -40,29 +40,29 @@ function drawPlat($currentPage = 1, $postsPerPage = 5){
     $currentAccomp = null;
     //affiche les plats avec sauces, ingrédients et accompagnements
     while ($row = mysqli_fetch_assoc($result)) {
-        if ($currentPlat !== $row['Plat_id']) {
+        if ($currentPlat !== $row['Nom_P']) {
             if ($currentPlat !== null) {
                 echo '</ul></ul></ul>';
             }
-            $currentPlat = $row['Plat_id'];
+            $currentPlat = $row['Nom_P'];
             echo '<h2>' . htmlspecialchars($row['Nom_P']) . '</h2>';
             echo '<ul>';
         }
 
-        if ($currentSauce !== $row['Sauce_id']) {
+        if ($currentSauce !== $row['Nom_S']) {
             if ($currentSauce !== null) {
                 echo '</ul>';
             }
-            $currentSauce = $row['Sauce_id'];
+            $currentSauce = $row['Nom_S'];
             if ($row['Nom_S']) {
                 echo '<li>Sauce: ' . htmlspecialchars($row['Nom_S']) . '<ul>';
             } else {
-                echo '<li>Sauce: None<ul>';
+                echo '<li>Sauce: aucune<ul>';
             }
         }
 
         if ($row['Nom_I']) {
-            echo '<li>Ingredient: ' . htmlspecialchars($row['Nom_I']) . '</li>';
+            echo '<li>Ingredients: ' . htmlspecialchars($row['Nom_I']) . '</li>';
         }
 
         if ($currentAccomp !== $row['Nom_Accomp']) {
@@ -71,9 +71,9 @@ function drawPlat($currentPage = 1, $postsPerPage = 5){
             }
             $currentAccomp = $row['Nom_Accomp'];
             if ($row['Nom_Accomp']) {
-                echo '<li>Accompaniment: ' . htmlspecialchars($row['Nom_Accomp']) . '</li>';
+                echo '<li>Accompagnement: ' . htmlspecialchars($row['Nom_Accomp']) . '</li>';
             } else {
-                echo '<li>Accompaniment: None</li>';
+                echo '<li>Accompagnement: aucun</li>';
             }
         }
     }
