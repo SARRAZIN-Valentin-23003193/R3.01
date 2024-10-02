@@ -7,7 +7,7 @@ function renderClubs(array $clubs, int $totalPages) {
 
     // Generate pagination links
     for ($i = 1; $i <= $totalPages; $i++) {
-        echo '<a href="?page=' . $i . '">' . $i . '</a> ';
+        echo '<a href="?action=clubs&page=' . $i . '">' . $i . '</a> ';
     }
 }
 ?>
