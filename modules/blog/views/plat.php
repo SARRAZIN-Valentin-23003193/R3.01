@@ -1,5 +1,5 @@
 <?php
-require '/home/tenrac45/www/modules/blog/controllers/platController.php';
+require '/home/tenrac45/www/modules/blog/controllers/platModel.php';
 require __DIR__ . '/HtmlLayout.php';
 start_page("L'ordre des tenracs");
 addHeader();
