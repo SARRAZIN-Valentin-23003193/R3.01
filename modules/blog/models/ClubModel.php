@@ -61,7 +61,7 @@ class ClubModel {
 // Utilisation de la classe Club
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $club = new Club();
+    $club = new ClubModel();
 
     if (isset($_POST['ajouter'])) {
         $nom = $_POST['nomclub'];

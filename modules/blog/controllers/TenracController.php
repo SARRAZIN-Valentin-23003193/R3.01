@@ -1,8 +1,18 @@
 <?php
-
+//Appel du modèle TenracModel
 require '../models/TenracModel.php';
 
 class TenracController {
+    private $tenracModel; //Stock le modèle
+
+    public function __construct(){
+        $this->tenracModel = new TenracModel(); //Initialise le modèle
+    }
+    public function afficherTenrac(){
+
+    }
+}
+
 
 
     function initLigne($nom, $num, $mail, $adresse, $grade, $titre, $rang, $dignite){
