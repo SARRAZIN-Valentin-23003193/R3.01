@@ -43,16 +43,16 @@ function drawPlat($currentPage = 1, $postsPerPage = 5){
         if ($currentPlat != $row['Nom_P']) {
             $currentPlat = $row['Nom_P'];
             echo '<h2>' . htmlspecialchars($row['Nom_P']) . '</h2>';
-            echo '<ul>';
+
         }
 
         if ($currentSauce !== $row['Nom_S']) {
 
             $currentSauce = $row['Nom_S'];
             if ($row['Nom_S']) {
-                echo '<li>Sauce: ' . htmlspecialchars($row['Nom_S']) . '<ul>';
+                echo '<li>Sauce: ' . htmlspecialchars($row['Nom_S']) . '</li>';
             } else {
-                echo '<li>Sauce: aucune<ul>';
+                echo '<li>Sauce: aucune</li>';
             }
         }
 
