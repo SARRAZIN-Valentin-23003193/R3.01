@@ -1,13 +1,31 @@
 <?php
 
-//appel modèle platsModel
-require '../models/platsModel.php';
+namespace blog\controllers;
+
+use platsModel;
+
+require 'modules/blog/models/platsModel.php'; // Inclure le modèle plat
+require 'modules/blog/views/plat.php';
 
 class platController {
-    private $model; // sert à stocker l'instance du modèle
+
+    private $platmodel; // sert à stocker l'instance du modèle
 
     public function __construct() {
-        $this->model = new platsModel(); // Initialisation du modèle
+        $this->platmodel = new platsModel(); // Initialisation du modèle plat
+    }
+
+    public function execute() : void
+    {
+        (new \blog\views\plat())->show();
+    }
+
+    function drawPLat($currentPage = 1, $postsPerPage = 5) {
+        $platModel = new platsModel();
+        list($plat, $totalPosts) = $platModel->fetchPLats($currentPage, $postsPerPage);
+
+        $totalPages = ceil($totalPosts / $postsPerPage);
+        renderClubs($plat, $totalPages);
     }
 
     //ajout des plats
