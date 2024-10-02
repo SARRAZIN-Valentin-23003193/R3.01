@@ -21,19 +21,24 @@ class TenracController {
 
     public function ajoutTenrac() {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $tenrac = new TenracModel();
+            $nom = $_POST['nom'];
+            $num = $_POST['num'];
+            $mail = $_POST['mail'];
+            $adresse = $_POST['adresse'];
+            $grade = $_POST['grade'];
+            $titre = $_POST['titre'];
+            $rang = $_POST['rang'];
+            $dignite = $_POST['dignite'];
 
-            if (isset($_POST['ajouter'])) {
-                $nom = $_POST['nom'];
-                $num = $_POST['num'];
-                $mail = $_POST['mail'];
-                $adresse = $_POST['adresse'];
-                $grade = $_POST['grade'];
-                $titre = $_POST['titre'];
-                $rang = $_POST['rang'];
-                $dignite = $_POST['dignite'];
-                $tenrac->ajouterTenrac($nom, $num, $mail, $adresse, $grade, $titre, $rang, $dignite);
-            }
+            if (!empty($nom) && !empty($num) && !empty($mail) && !empty($adresse) && !empty($grade) && !empty($titre) && !empty($rang) && !empty($dignite)) {
+                $this->tenracModel->ajouterTenrac($nom, $num, $mail, $adresse, $grade, $titre, $rang, $dignite);
+                header('Location: https://tenrac45.alwaysdata.net/index.php/?action=tenracView');
+                exit();
+            } else {
+                header('Location: https://tenrac45.alwaysdata.net/index.php/?action=tenracView');
+                exit();
+                //echo "Veuillez remplir tous les champs.";
+                }
         }
     }
 
