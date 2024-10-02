@@ -24,7 +24,7 @@ class plat {
             </section>
         </main>
 <?php
-        (new HtmlLayout("Plats", ob_get_clean()))->show();
+        (new HtmlLayout("plats", ob_get_clean()))->show();
     }
 }
 ?>
