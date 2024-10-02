@@ -3,6 +3,8 @@
 namespace blog\views;
 
 
+use blog\controllers\ClubController;
+
 class structure {
 
     public function show() {
@@ -18,10 +20,14 @@ class structure {
         <link rel="stylesheet" href="<?php echo base_url('_assets/styles/clubStyle.css'); ?>">
         <section id="bloc">
             <?php
-
-            //$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-            //$postsPerPage = 6;
-            //drawClub($currentPage, $postsPerPage);
+            if (class_exists('blog\controllers\ClubController')) {
+                $controller = new ClubController();
+                $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                $postsPerPage = 6;
+                $controller->drawClub($currentPage, $postsPerPage);
+            } else {
+                echo "Erreur : La classe ClubController n'existe pas.";
+            }
             ?>
         </section>
     </main>
