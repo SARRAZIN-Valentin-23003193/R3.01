@@ -1,0 +1,200 @@
+/* Style général du conteneur du calendrier */
+#calendar {
+    margin: 1em auto; /* permet de centrer le calendrier et met une marge autour */
+    padding: 0.5em; /* espacement dans le calendrier */
+    background-color: rgba(216, 146, 29, 0.1);
+    border-radius: 8px; /* arrondi les bords */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* pour l'effet d'ombre */
+    max-width: 100%; /* Laisse le conteneur s'adapter à la largeur de l'écran */
+    overflow-x: auto; /* Ajoute un défilement horizontal si le contenu dépasse */
+}
+
+/* Style de la barre d'outil */
+#calendar .fc-header-toolbar {
+    background: rgba(216, 146, 29, 0.9);
+    color: white;
+    padding: 0.3em 0.5em;
+    border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap; /* Permet à la barre d'outils de se replier sur plusieurs lignes */
+    justify-content: space-between;
+    gap: 0.5em; /* Ajoute un espace entre les éléments */
+}
+
+/* Style du titre de la barre d'outils */
+#calendar .fc-toolbar-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    flex: 1 1 auto; /* Permet au titre de s'adapter à l'espace disponible */
+    text-align: center; /* Centre le titre sur la ligne */
+}
+
+/* Style des boutons de la barre d'outil */
+#calendar .fc-button {
+    background: #d6921d;
+    color: white;
+    border: 1px solid #e6a23d;
+    border-radius: 4px;
+    padding: 0.3em 0.8em;
+    margin: 0.2em 0; /* Réduit la marge verticale */
+    font-size: 0.9em;
+    transition: background 0.3s, color 0.3s, transform 0.2s; /* ajoute un effet de transition */
+    cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+    flex: 0 0 auto; /* Empêche les boutons de s'étirer */
+    max-width: 100%; /* Empêche les boutons de dépasser la largeur de l'écran */
+}
+
+/* Effets quand la souris passe sur les boutons */
+#calendar .fc-button:hover {
+    background: #e6a23d;
+    color: black;
+    transform: scale(1.05); /* grossi légèrement le texte */
+}
+
+/* Couleur des boutons sélectionnés */
+#calendar .fc-button-primary {
+    background: #d6921d;
+    border: none;
+}
+
+/* Effets quand la souris passe sur les boutons actifs */
+#calendar .fc-button-primary:hover {
+    background: #e6a23d;
+    color: black;
+}
+
+/* Style des cases de jours du calendrier */
+#calendar .fc-daygrid-day-frame {
+    display: flex;
+    flex-direction: column; /* empile les repas verticalement */
+    justify-content: flex-start; /* Aligne le contenu en haut de la case */
+    align-items: flex-start; /* Aligne le contenu à gauche de la case */
+    padding: 2px;
+    height: 100%;
+}
+
+/* Style des numéros du jours */
+#calendar .fc-daygrid-day-number {
+    color: #d6921d;
+    font-weight: bold;
+    font-size: 0.9em;
+    align-self: flex-end;
+    margin-right: 5px;
+}
+
+/* Style des événements du calendrier */
+#calendar .fc-event {
+    white-space: normal; /* permet au texte de se mettre sur plusieurs lignes */
+    overflow: hidden; /* cache le dépassement du texte de la case */
+    text-overflow: ellipsis; /* Ajoute des points de suspension si le texte dépasse */
+    background-color: rgba(216, 146, 29, 0.8);
+    border: none;
+    color: white;
+    padding: 2px 4px;
+    font-size: 0.85em;
+    border-radius: 3px;
+    max-height: 100%;
+    line-height: 1.2em;
+    width: 100%; /* Permet à l'événement de prendre toute la largeur disponible */
+    box-sizing: border-box; /* Inclus le padding dans la largeur totale */
+}
+
+/* Alignement des cases du calendrier */
+#calendar .fc-daygrid-day {
+    vertical-align: top;
+    padding: 0;
+    height: auto;
+}
+
+/* Style pour l'alignement du texte des événements à gauche */
+#calendar .fc-daygrid-day-events {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* aligne à gauche le texte */
+    justify-content: flex-start;
+    padding: 2px;
+    height: 100%;
+}
+
+/* Style des bordures des cases */
+#calendar .fc-daygrid-day {
+    border: 1px solid rgba(216, 146, 29, 0.5);
+}
+
+/* Style de la case du jour actuel */
+#calendar .fc-day-today {
+    background-color: rgba(216, 146, 29, 0.3);
+}
+
+/* Ajuste la taille des événements repas */
+#calendar .fc-event {
+    background-color: rgba(216, 146, 29, 0.8);
+    border: none;
+    color: white;
+    padding: 1px 3px;
+    font-size: 0.85em;
+    border-radius: 3px;
+}
+
+/* Réduit de la taille des numéros du jour */
+#calendar .fc-daygrid-day-number {
+    color: #d6921d;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* Couleur pour les jours qui ne font pas partie du mois actuel */
+#calendar .fc-daygrid-day.fc-day-other {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* Style des en-têtes de colonnes quand calendrier est en weekly */
+#calendar .fc-col-header-cell {
+    background-color: rgba(216, 146, 29, 1);
+    color: white;
+    font-weight: bold;
+    font-size: 0.9em;
+    padding: 5px;
+}
+
+/* Ajustement du style en responsive */
+@media screen and (max-width: 768px) {
+    /* Réduction de la taille des boutons pour les petits écrans */
+    #calendar .fc-button {
+        padding: 0.3em 0.5em;
+        font-size: 0.8em;
+    }
+
+    /* Réduction de la taille du titre pour les petits écrans */
+    #calendar .fc-toolbar-title {
+        font-size: 1em;
+    }
+
+    /* Ajuste la largeur des colonnes des jours pour les petits écrans */
+    #calendar .fc-daygrid-day-frame {
+        padding: 1px;
+    }
+
+    /* Réduit la taille des numéros de jour */
+    #calendar .fc-daygrid-day-number {
+        font-size: 0.75em;
+    }
+
+    /* Réduction de la taille des événements pour les petits écrans */
+    #calendar .fc-event {
+        font-size: 0.75em;
+        padding: 1px 2px;
+    }
+
+    /* Cache les textes des boutons de navigation pour économiser de l'espace */
+    #calendar .fc-prev-button span,
+    #calendar .fc-next-button span {
+        display: none;
+    }
+
+    /* Centrage du calendrier pour les petits écrans */
+    #calendar {
+        max-width: 100%;
+    }
+}
