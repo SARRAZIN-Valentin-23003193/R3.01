@@ -5,6 +5,7 @@ namespace blog\controllers;
 use blog\views\plat;
 
 require 'modules/blog/models/platsModel.php';
+require 'modules/blog/views/plat.php';
 
 class platController {
     private $model; // sert à stocker l'instance du modèle
