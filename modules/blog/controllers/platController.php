@@ -8,10 +8,19 @@ require 'modules/blog/models/platsModel.php';
 require 'modules/blog/views/plat.php';
 
 class platController {
-    private $model; // sert à stocker l'instance du modèle
+    private $platModel; // sert à stocker l'instance du modèle
 
     public function __construct() {
-        $this->model = new platsModel(); // Initialisation du modèle
+        $this->platModel = new platsModel(); // Initialisation du modèle
+    }
+
+
+    function drawPlat($currentPage = 1, $postsPerPage = 5) {
+        $platModel = new platsModel();
+        list($plats, $totalPosts) = $platModel->fetchPlats($currentPage, $postsPerPage);
+
+        $totalPages = ceil($totalPosts / $postsPerPage);
+        renderPlats($plats, $totalPages);
     }
 
     //ajout des plats
@@ -53,7 +62,23 @@ class platController {
         }
     }
 
+
     public function execute() : void {
         (new plat())->show();
+    }
+}
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $plat = new platsModel();
+
+    if (isset($_POST['ajouter'])) {
+        $nom = $_POST['nomplat'];
+        $plat->ajouterPLat($nom);
+    } elseif (isset($_POST['modifier'])) {
+        $idModif = $_POST['PLat_id'];
+        $PLatNom = $_POST['PLatNom'];
+        $plat->modifierPLat($idModif, $PlatNom);
+    } elseif (isset($_POST['supprimer'])) {
+        $idSup = $_POST['PLat_id'];
+        $plat->supprimerPlat($idSup);
     }
 }
