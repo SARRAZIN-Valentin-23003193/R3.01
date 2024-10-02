@@ -28,7 +28,7 @@ class TenracView {
         ?>
     </table>
 
-    <form action="../models/rechercheTenracModel.php" method="post">
+    <form action="?action=rechercheTenrac" method="post">
         <label><input type="text" name="recherche"></label>
         <button type="submit">Rechercher</button>
     </form>
