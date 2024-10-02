@@ -3,6 +3,7 @@
 
 require 'modules/blog/controllers/Homepage.php';
 require 'modules/blog/controllers/ClubController.php';
+require 'modules/blog/controllers/TenracController.php';
 
 session_start();
 
@@ -16,6 +17,13 @@ try {
                 break;
             case 'clubs':
                 (new blog\controllers\ClubController())->execute();
+                break;
+            case 'ajouterClub':
+                (new blog\controllers\ClubController())->ajouterClub();
+                break;
+            case 'tenrac':
+                (new blog\controllers\TenracController())->execute();
+                break;
         }
     }else {
         (new blog\controllers\Homepage())->execute();

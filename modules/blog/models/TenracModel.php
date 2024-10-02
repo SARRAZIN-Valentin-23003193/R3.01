@@ -1,4 +1,7 @@
 <?php
+
+namespace blog\models;
+
 class TenracModel {
     private $host = "mysql-tenrac45.alwaysdata.net";
     private $username = "tenrac45";
