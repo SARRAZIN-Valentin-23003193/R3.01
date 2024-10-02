@@ -1,5 +1,4 @@
 <?php
-require_once '../models/Authentification_Model.php';
 session_start();
 class Authentification_Controller {
     private $userModel; // sert à stocker l'instance du modèle

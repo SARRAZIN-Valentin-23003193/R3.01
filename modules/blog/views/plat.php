@@ -2,19 +2,29 @@
 
 namespace blog\views;
 
+
 class plat {
 
     public function show() : void {
         ob_start();
-
 ?>
-    <main>
-        <section id="ensemble_Plat">
-            <h2> </h2>
-        </section>
-    </main>
+        <form action="?action=ajouterPlat" method="post">
+            <label>Plat : <input type="text" name="nomplat" required></label>
+            <button type="submit">envoyer</button>
+        </form>
+
+        <main>
+            <section id="bloc">
+                <?php
+
+                //$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                //$postsPerPage = 6;
+                //drawPlat($currentPage, $postsPerPage);
+                ?>
+            </section>
+        </main>
 <?php
-        (new HtmlLayout("Plats", ob_get_clean()))->show();
+        (new HtmlLayout("plats", ob_get_clean()))->show();
     }
 }
 ?>

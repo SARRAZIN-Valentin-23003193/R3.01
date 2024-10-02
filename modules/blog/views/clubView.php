@@ -1,5 +1,6 @@
 <?php
-function renderClubs($clubs, $totalPages) {
+require_once 'modules/blog/views/clubLayout.php';
+function renderClubs(array $clubs, int $totalPages) {
     foreach ($clubs as $club) {
         initClub($club['Clubid'], $club['Nom_C'], $club['Adresse_C']);
     }
