@@ -1,7 +1,7 @@
 <?php
 namespace blog\views;
 
-require 'HtmlLayout.php';
+require_once 'HtmlLayout.php';
 
 class Homepage {
 
