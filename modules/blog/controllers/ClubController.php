@@ -21,10 +21,10 @@ class ClubController {
         (new \blog\views\structure())->show();
     }
 
-    function drawClub($currentPage = 1, $postsPerPage = 5) {
+    public function drawClub($currentPage = 1, $postsPerPage = 5) {
+        require_once 'modules/blog/views/clubView.php';
         $clubModel = new ClubModel();
         list($clubs, $totalPosts) = $clubModel->fetchClubs($currentPage, $postsPerPage);
-
         $totalPages = ceil($totalPosts / $postsPerPage);
         renderClubs($clubs, $totalPages);
     }
