@@ -2,7 +2,7 @@
 
 namespace blog\views;
 
-class tenrac {
+class TenracView {
 
     public function show() : void{
         ob_start();

@@ -16,28 +16,27 @@ class TenracModel {
         }
     }
 
-    public function recupTenrac($currentPage = 1, $postsPerPage = 5) {
+    public function recupTenrac($currentPage = 1, $postsPerPage = 5): array {
         // Get the total number of posts
-        $result = mysqli_query($this->conn, 'SELECT COUNT(*) as count FROM Tenracs');
-        $row = mysqli_fetch_assoc($result);
+        $stmt = $this->conn->query('SELECT COUNT() as count FROM Tenracs');
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $totalPosts = (int)$row['count'];
 
         // Calculate the offset
-        $offset = ($currentPage - 1) * $postsPerPage;
+        $offset = ($currentPage - 1)*$postsPerPage;
 
         // Fetch the posts for the current page
-        $query = 'SELECT Nom_T, NumTel, Courriel, Adresse_T, Grade, Titre, Rang, Dignite FROM Tenracs LIMIT ' . $postsPerPage . ' OFFSET ' . $offset;
-        $result = mysqli_query($this->conn, $query);
+        $stmt = $this->conn->prepare('SELECT Nom_T, NumTel, Courriel, Adresse_T, Grade, Titre, Rang, Dignite FROM Tenracs LIMIT :limit OFFSET :offset');
+        $stmt->bindValue(':limit', $postsPerPage, PDO::PARAM_INT);
+        $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
 
-        $clubs = [];
-        while ($row = mysqli_fetch_assoc($result)) {
-            $clubs[] = $row;
-        }
+        $tenracs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        return [$clubs, $totalPosts];
+        return [$tenracs, $totalPosts];
     }
 
-    // Méthode pour ajouter un tenrac
+    // Méthode pour ajouter un tenracView
     public function ajouterTenrac($nom, $num, $mail, $adresse, $grade, $titre, $rang, $dignite) {
         // Connexion à la base de données (adapter les valeurs de connexion)
         $host = 'mysql-tenrac45.alwaysdata.net';
@@ -67,10 +66,10 @@ class TenracModel {
         } catch(PDOException $e) {
             // echo "Erreur";
         }
-        header('location:https://tenrac45.alwaysdata.net/modules/blog/views/tenrac.php');
+        header('location:https://tenrac45.alwaysdata.net/modules/blog/views/TenracView.php');
     }
 
-    // Méthode pour modifier un tenrac
+    // Méthode pour modifier un tenracView
     public function modifierTenrac($idModif, $Nom, $Num, $Mail, $Adresse, $Grade, $Titre, $Rang, $Dignite) {
         try {
             $sql = "UPDATE Tenracs SET Nom_T = :Nom, NumTel = :Num, Courriel = :Mail, Adresse_T = :Adresse, Grade = :Grade, Titre = :Titre, Rang = :Rang, Dignite = :Dignite WHERE Tenracid = :idModif";
@@ -91,7 +90,7 @@ class TenracModel {
         }
     }
 
-    // Méthode pour supprimer un tenrac
+    // Méthode pour supprimer un tenracView
     public function supprimerTenrac($idSup) {
         try {
             $sql = "DELETE FROM Tenracs WHERE Tenracid = :idSup";

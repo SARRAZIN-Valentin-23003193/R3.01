@@ -6,18 +6,17 @@ namespace blog\controllers;
 use TenracModel;
 
 require 'modules/blog/models/TenracModel.php';
-require 'modules/blog/views/tenrac.php';
+require 'modules/blog/views/TenracView.php';
 
 class TenracController {
     private $tenracModel; //Stock le modèle
-    //private $nom; Fait ça
 
     public function __construct(){
         $this->tenracModel = new TenracModel(); //Initialise le modèle
     }
 
     public function execute() : void {
-        (new \blog\views\tenrac())->show();
+        (new \blog\views\TenracView())->show();
     }
 
     public function ajoutTenrac() {
@@ -73,7 +72,7 @@ class TenracController {
         list($clubs, $totalPosts) = $clubModel->recupTenrac($currentPage, $postsPerPage);
 
         $totalPages = ceil($totalPosts / $postsPerPage);
-        renderClubs($clubs, $totalPages);
+        renderTenrac($clubs, $totalPages);
     }
     // Utilisation de la classe TenracModel
 

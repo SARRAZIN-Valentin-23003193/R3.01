@@ -23,7 +23,7 @@ try {
             case 'ajouterClub':
                 (new blog\controllers\ClubController())->ajouterClub();
                 break;
-            case 'tenrac':
+            case 'tenracView':
                 (new blog\controllers\TenracController())->execute();
                 break;
             case 'calendrier':
