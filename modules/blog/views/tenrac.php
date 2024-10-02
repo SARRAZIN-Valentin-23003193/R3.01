@@ -1,7 +1,7 @@
 <?php
 require 'HtmlLayout.php';
-require '../models/ajout-tenrac.php';
-require '../controllers/recup-tenrac.php';
+require '../controllers/TenracController.php';
+require '../models/recup-tenrac.php';
 start_page('Tenracs');
 addHeader();
 ?>
@@ -23,7 +23,7 @@ addHeader();
             <label><input type="text" name="recherche"></label>
             <button type="submit">Rechercher</button>
         </form>
-        <form action="../controllers/ajout-tenrac.php" method="post">
+        <form action="../controllers/TenracController.php" method="post">
             <label>Nom du tenrac<input type="text" name="nom"></label>
             <label>Numéro de téléphone<input type="text" name="num"></label>
             <label>Mail<input type="text" name="mail"></label>

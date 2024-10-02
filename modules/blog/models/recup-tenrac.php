@@ -1,5 +1,5 @@
 <?php
-require '/home/tenrac45/www/modules/blog/models/tenracModel.php';
+require '/home/tenrac45/www/modules/blog/models/TenracModel.php';
 require '../models/connectDataBaseModel.php';
 function insertLigne($currentPage = 1, $tenracsPerPage = 10){
     $dbLink = connectDB();

@@ -1,6 +1,6 @@
 <?php
 require 'connectDataBaseModel.php';
-require 'tenracModel.php';
+require 'TenracModel.php';
 ?>
 <?php
 $dbLink = connectDB();
