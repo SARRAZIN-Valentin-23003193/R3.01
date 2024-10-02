@@ -40,19 +40,14 @@ function drawPlat($currentPage = 1, $postsPerPage = 5){
     $currentAccomp = null;
     //affiche les plats avec sauces, ingrédients et accompagnements
     while ($row = mysqli_fetch_assoc($result)) {
-        if ($currentPlat !== $row['Nom_P']) {
-            if ($currentPlat !== null) {
-                echo '</ul></ul></ul>';
-            }
+        if ($currentPlat != $row['Nom_P']) {
             $currentPlat = $row['Nom_P'];
             echo '<h2>' . htmlspecialchars($row['Nom_P']) . '</h2>';
             echo '<ul>';
         }
 
         if ($currentSauce !== $row['Nom_S']) {
-            if ($currentSauce !== null) {
-                echo '</ul>';
-            }
+
             $currentSauce = $row['Nom_S'];
             if ($row['Nom_S']) {
                 echo '<li>Sauce: ' . htmlspecialchars($row['Nom_S']) . '<ul>';
@@ -66,9 +61,7 @@ function drawPlat($currentPage = 1, $postsPerPage = 5){
         }
 
         if ($currentAccomp !== $row['Nom_Accomp']) {
-            if ($currentAccomp !== null) {
-                echo '</ul>';
-            }
+
             $currentAccomp = $row['Nom_Accomp'];
             if ($row['Nom_Accomp']) {
                 echo '<li>Accompagnement: ' . htmlspecialchars($row['Nom_Accomp']) . '</li>';
@@ -78,9 +71,7 @@ function drawPlat($currentPage = 1, $postsPerPage = 5){
         }
     }
 
-    if ($currentPlat !== null) {
-        echo '</ul></ul>';
-    }
+
 
     $totalPages = ceil($totalPosts / $postsPerPage);
     for ($i = 1; $i <= $totalPages; $i++) {
