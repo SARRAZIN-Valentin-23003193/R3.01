@@ -2,83 +2,28 @@
 
 namespace blog\controllers;
 
-use blog\views\platView;
-use blog\models\platsModel;
+use PlatModel;
 
-require 'modules/blog/models/PlatsModel.php';
+require 'modules/blog/models/PlatModel.php';
 require 'modules/blog/views/PlatView.php';
 
 class PlatController {
-    private $platModel; // sert à stocker l'instance du modèle
+    private $PlatModel; // sert à stocker l'instance du modèle
 
     public function __construct() {
-        $this->platModel = new PlatsModel(); // Initialisation du modèle
+        $this->PlatModel = new PlatModel(); // Initialisation du modèle
     }
 
+    public function execute() : void
+    {
+        (new \blog\views\PlatView())->show();
+    }
 
-    function drawPlat($currentPage = 1, $postsPerPage = 5) {
-        $platModel = new PlatsModel();
-        list($plats, $totalPosts) = $platModel->fetchPlats($currentPage, $postsPerPage);
+    public function drawPlat($currentPage = 1, $postsPerPage = 5) {
+        require_once 'modules/blog/views/PlatGenerator.php';
+        $platModel = new PlatModel();
+        list($plats, $totalPosts) = $platModel->fetchPlat($currentPage, $postsPerPage);
         $totalPages = ceil($totalPosts / $postsPerPage);
-        renderClubs($plats, $totalPages);
-    }
-
-    //ajout des plats
-    public function ajouterPlat() {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $nom = $_POST['nomplat'];
-
-            if (!empty($nom)) {
-                $this->platsModel->ajouterPlat($nom);
-            } else {
-                echo "Veuillez remplir tous les champs.";
-            }
-        }
-    }
-
-    // modification des plats
-    public function modifierClub() {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $idModif = $_POST['Plat_id'];
-            $PlatNom = $_POST['PlatNom'];
-            if (!empty($idModif) && !empty($Platnom)) {
-                $this->platsModel->modifierPlat($idModif, $PlatNom);
-            } else {
-                echo "Veuillez remplir tous les champs.";
-            }
-        }
-    }
-
-    //destruction des plats
-    public function supprimerPlat() {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $idSup = $_POST['Plat_id'];
-
-            if (!empty($idSup)) {
-                $this->platsModel->supprimerPlat($idSup);
-            } else {
-                echo "Identifiant club manquant.";
-            }
-        }
-    }
-
-
-    public function execute() : void {
-        (new platView())->show();
-    }
-}
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $plat = new PlatsModel();
-
-    if (isset($_POST['ajouter'])) {
-        $nom = $_POST['nomplat'];
-        $plat->ajouterPLat($nom);
-    } elseif (isset($_POST['modifier'])) {
-        $idModif = $_POST['PLat_id'];
-        $PlatNom = $_POST['PLatNom'];
-        $plat->modifierPLat($idModif, $PlatNom);
-    } elseif (isset($_POST['supprimer'])) {
-        $idSup = $_POST['PLat_id'];
-        $plat->supprimerPlat($idSup);
+        renderPlat($plats, $totalPages);
     }
 }
