@@ -4,7 +4,6 @@ require __DIR__ . '/HtmlLayout.php';
 require '../controllers/ajout-club.php';
 require '../controllers/sup-club.php';
 
-
 start_page("L'ordre des tenracs");
 addHeader();
 ?>
@@ -15,6 +14,7 @@ addHeader();
     </form>
 
     <main>
+        <link rel="stylesheet" href="<?php echo base_url('_assets/styles/clubStyle.css'); ?>">
         <section id="bloc">
             <?php
             $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
