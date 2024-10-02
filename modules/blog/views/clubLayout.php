@@ -10,7 +10,12 @@ function initClub($Clubid, $Nom_C, $Adresse_C){
                 <input type="hidden" name="Clubid" value="<?php echo (int) $Clubid; ?>">
                 <button type="submit" class="boutonsuprr">Supprimer</button>
             </form>
-            <button id="<?php echo(string) $Clubid; ?>" class="boutonmodif">Modifier</button>
+
+
+            <form method="POST" action="modifClub.php">
+                <input type="hidden" name="Clubid" value="<?php echo (int) $Clubid; ?>">
+                <button type="submit" class="boutonmodif">Modifier</button>
+            </form>
         </section>
     </section>
     <?php

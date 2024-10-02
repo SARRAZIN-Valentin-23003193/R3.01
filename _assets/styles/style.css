@@ -40,8 +40,7 @@ header {
     opacity: 0;
 
     li {
-        padding: 10px 0;
-        font-size: 22px;
+        font-size: 2vw;
         a {
             text-decoration: none;
             color: white;
@@ -252,9 +251,14 @@ footer p {
 }
 
 
+/** AUTHENTIFICATION **/
+
+
+
+
 /** RESPONSIVE **/
 
-@media only screen and (max-width:950px) {
+@media only screen and (max-width:700px) {
     header {
         section {
             padding-left: 0;
@@ -295,14 +299,11 @@ footer p {
     }
 
     #menu {
-        flex-direction: row;
-        width: 90vw;
-        height: 5vh;
-        left: -6vw;
-        padding: 3em ;
-
+        margin-left: -2em;
+        width: 80.8vw;
+        height: 100vh;
         li {
-            font-size: 1em;
+            font-size: 4vw;
         }
 
     }

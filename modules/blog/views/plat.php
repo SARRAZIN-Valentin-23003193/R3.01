@@ -6,9 +6,7 @@ addHeader();
 ?>
     <main>
         <section id="ensemble_Plat">
-            <?php
-            drawPlat();
-            ?>
+            <h2> </h2>
         </section>
     </main>
 <?php

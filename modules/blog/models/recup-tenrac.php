@@ -1,7 +1,7 @@
 <?php
-require '/home/tenrac45/www/modules/blog/models/tenracModel.php';
-require 'connectDataBaseController.php';
-function insertLigne($currentPage = 1, $postsPerPage = 10){
+require '/home/tenrac45/www/modules/blog/models/TenracModel.php';
+require '../models/connectDataBaseModel.php';
+function insertLigne($currentPage = 1, $tenracsPerPage = 10){
     $dbLink = connectDB();
 
     // Get the total number of posts
@@ -10,10 +10,10 @@ function insertLigne($currentPage = 1, $postsPerPage = 10){
     $totalPosts = (int)$row['count'];
 
     // Calculate the offset
-    $offset = ($currentPage - 1) * $postsPerPage;
+    $offset = ($currentPage - 1) * $tenracsPerPage;
 
     // Fetch the posts for the current page
-    $query = 'SELECT Nom_T, NumTel, Courriel, Adresse_T, Grade, Titre, Rang, Dignite FROM Tenracs LIMIT ' . $postsPerPage . ' OFFSET ' . $offset;
+    $query = 'SELECT Nom_T, NumTel, Courriel, Adresse_T, Grade, Titre, Rang, Dignite FROM Tenracs LIMIT ' . $tenracsPerPage . ' OFFSET ' . $offset;
     $result = mysqli_query($dbLink, $query);
 
     while ($row = mysqli_fetch_assoc($result)) {
@@ -30,7 +30,7 @@ function insertLigne($currentPage = 1, $postsPerPage = 10){
     }
 
     // Generate pagination links
-    $totalPages = ceil($totalPosts / $postsPerPage);
+    $totalPages = ceil($totalPosts / $tenracsPerPage);
     for ($i = 1; $i <= $totalPages; $i++) {
         echo '<a href="?page=' . $i . '">' . $i . '</a> ';
     }
