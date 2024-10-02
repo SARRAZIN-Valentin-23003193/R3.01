@@ -7,6 +7,7 @@ require 'modules/blog/controllers/TenracController.php';
 require 'modules/blog/controllers/CalendrierController.php';
 require 'modules/blog/controllers/AuthentificationController.php';
 require 'modules/blog/controllers/PlatController.php';
+require 'modules/blog/controllers/RechercheTenracController.php';
 
 session_start();
 
@@ -47,6 +48,9 @@ try {
                 break;
             case 'logout':
                 (new blog\controllers\AuthentificationController())->deconnexion();
+                break;
+            case 'rechercheTenrac':
+                (new blog\controllers\RechercheTenracController())->rechercheTenrac();
                 break;
             default:
                 (new blog\controllers\HomepageController())->execute();
